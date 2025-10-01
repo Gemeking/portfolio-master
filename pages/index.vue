@@ -183,7 +183,7 @@ export default {
   bottom: calc(-1 * var(--border-size));
 }
 
-/* Vertical borders *
+/* Vertical borders */
 .border-left,
 .border-right {
   position: absolute;
