@@ -4,11 +4,12 @@
     fixed="top"
     :type="themeMode === 'dark' ? 'dark' : 'light'"
     :variant="themeMode === 'dark' ? 'dark' : 'light'"
+    class="custom-navbar"
   >
     <!-- Brand Logo -->
     <b-navbar-brand tag="h1" to="/" style="font-weight: bolder;">
       <img
-        src="@/assets/mura-creatives-logo.png"
+        :src="themeMode === 'dark' ? require('@/assets/mura-creatives-logo-white.png') : require('@/assets/mura-creatives-logo-black.png')"
         alt="Mura Creatives Logo"
         class="brand-logo"
       />
@@ -39,11 +40,11 @@
         >
           <SunnyIcon
             v-if="themeMode === 'dark'"
-            style="color: #fff; font-size: 22px;"
+            style="color: #fff; font-size: 26px;"
           />
           <MoonIcon
             v-else
-            style="color: #000; font-size: 22px;"
+            style="color: #000; font-size: 26px;"
           />
         </b-nav-item>
       </b-navbar-nav>
@@ -81,7 +82,6 @@ export default {
     }
   },
   mounted() {
-    // Load saved theme
     if (localStorage.themeMode === "dark") {
       this.themeMode = "dark";
       document.body.classList.add("dark");
@@ -91,25 +91,30 @@ export default {
 </script>
 
 <style scoped>
+/* Navbar Custom Height */
+.custom-navbar {
+  height: 80px; /* increase navbar height */
+  padding: 0 2rem;
+}
+
 /* Logo Styling */
 .brand-logo {
-  height: 40px;
+  height: 60px; /* bigger logo */
   width: auto;
-  padding: 6px;
-  background: #000; /* black background */
-  border-radius: 6px;
+  padding: 8px;
+  border-radius: 8px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .brand-logo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 1);
 }
 
 /* Nav Styling */
 .navbar-nav {
-  margin-left: 100px;
+  margin-left: 120px; /* adjust spacing for bigger navbar */
 }
 @media screen and (max-width: 420px) {
   .navbar-nav {
@@ -117,9 +122,9 @@ export default {
   }
 }
 .nav-item {
-  font-size: 14px;
+  font-size: 16px; /* slightly bigger text */
   margin: 15px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 .nav-link a {
   color: #000 !important;
