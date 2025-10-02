@@ -167,17 +167,6 @@ export default {
   z-index: 1;
 }
 
-.border-right {
-  position: absolute;
-  height: 667px;
-  width: 80px;
-  background-image: url("@/assets/teletun-min.png");
-  background-repeat: repeat-y;
-  background-size: 100% auto;
-  background-position: center;
-  right: 0px; 
-  z-index: 1000;
-}
 
 
 /* ----------------------------- */

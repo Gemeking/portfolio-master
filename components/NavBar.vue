@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <div class="border-right"></div>
   <b-navbar
     toggleable="lg"
     fixed="top"
@@ -6,6 +8,7 @@
     :variant="themeMode === 'dark' ? 'dark' : 'light'"
     class="custom-navbar"
   >
+  
     <!-- Brand Logo -->
     <b-navbar-brand tag="h1" to="/" style="font-weight: bolder;">
       <img
@@ -50,6 +53,7 @@
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
+  </div>
 </template>
 
 <script>
@@ -79,7 +83,8 @@ export default {
         localStorage.themeMode = "light";
         document.body.classList.remove("dark");
       }
-    }
+    },
+    
   },
   mounted() {
     if (localStorage.themeMode === "dark") {
@@ -91,6 +96,18 @@ export default {
 </script>
 
 <style scoped>
+
+.border-right {
+  position: fixed;
+  height: 667px;
+  width: 80px;
+  background-image: url("@/assets/teletun-min.png");
+  background-size: 100% auto;
+
+  right: 0px; 
+  z-index: 1000;
+}
+
 /* Navbar Custom Height */
 .custom-navbar {
   height: 80px; /* increase navbar height */
