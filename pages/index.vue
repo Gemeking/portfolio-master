@@ -1,9 +1,7 @@
 <template>
   <div class="border-wrapper" ref="borderWrapper">
-    <!-- Top & Bottom (horizontal pattern) -->
     <div class="border-bottom"></div>
 
-    <!-- Left & Right (vertical pattern) -->
     <div class="border-right"></div>
 
     <b-row style="margin-left: 0;margin-right: 0;">
@@ -44,7 +42,6 @@
       </b-col>
     </b-row>
 
-    <!-- .SOCIAL LINKS SECTION (fixed left, vertical) -->
     <div class="social-icons animate__animated animate__fadeInUp animate__delay-1s">
       <social-link :to="socialLinks.github">
         <GithubIcon />
@@ -80,6 +77,9 @@ import TwitterIcon from "vue-ionicons/dist/logo-twitter.vue";
 import FacebookIcon from "vue-ionicons/dist/logo-facebook.vue";
 import YoutubeIcon from "vue-ionicons/dist/logo-youtube.vue";
 import MailIcon from "vue-ionicons/dist/md-mail.vue";
+
+// Assuming 'social-link' component is globally registered or imported elsewhere
+// and that all assets (mi.png, coding.png, teletun.png, teletun-min.png) exist in @/assets
 
 export default {
   components: {
@@ -134,6 +134,8 @@ export default {
 
   methods: {
     changeAvatar() {
+      // Note: This logic currently keeps the avatar the same on mouseenter/mouseleave.
+      // If you intended to swap it, you would update this logic.
       this.avatar =
         this.avatar === require("@/assets/mi.png")
           ? require("@/assets/mi.png")
@@ -144,11 +146,12 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .border-wrapper {
   position: relative;
   --border-size: 80px;
 }
-
 
 .border-bottom {
   position: absolute;
@@ -166,7 +169,8 @@ export default {
 }
 
 .border-bottom {
-  bottom: calc(-1 * var(--border-size));
+  bottom: 20px;
+  z-index: 1;
 }
 
 .border-left,
@@ -191,13 +195,15 @@ export default {
   right: 20px; 
   z-index: 1;
 }
-.border-bottom{
-  bottom: 20px;
-  z-index: 1;
+
+
+/* Avatar glow and motion */
+#avatar-img {
+  /* *** UPDATED ANIMATION RULE *** */
+  animation: subtle-float-and-shift 4s infinite ease-in-out alternate;
+  filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.3));
 }
 
-
-/* Avatar glow */
 #avatar-img::before {
   content: "";
   position: absolute;
@@ -207,15 +213,72 @@ export default {
   height: 100%;
   border-radius: 9999px;
   background: linear-gradient(135deg, #ff7f50, #ff1493, #8a2be2);
-  filter: blur(20px);
+  filter: blur(70px);
   opacity: 0.6;
   z-index: -1;
   transition: all 0.5s ease;
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+
+.group:hover #avatar-img {
+  filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.5));
 }
 
 .group:hover #avatar-img::before {
   filter: blur(30px);
   opacity: 0.8;
+}
+
+/* ------------------------------------------- */
+/* *** UPDATED KEYFRAMES FOR AMAZING MOTION *** */
+/* ------------------------------------------- */
+
+@keyframes subtle-float-and-shift {
+  0% {
+    /* Start low and slightly left */
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  15% {
+    /* Shift up and right, slight clockwise rotation */
+    transform: translate(1px, -1.5px) rotate(0.8deg);
+  }
+  30% {
+    /* Dip down and further right, counter-clockwise rotation */
+    transform: translate(2px, 0.5px) rotate(-1deg);
+  }
+  45% {
+    /* Settle back towards center, minimal rotation */
+    transform: translate(0.5px, -0.5px) rotate(0.2deg);
+  }
+  60% {
+    /* Float up and left, more rotation */
+    transform: translate(-1.5px, -1px) rotate(1.5deg);
+  }
+  75% {
+    /* Drop down sharply, less rotation */
+    transform: translate(-0.5px, 1px) rotate(-0.5deg);
+  }
+  90% {
+    /* A small final upward bounce */
+    transform: translate(0.25px, -0.25px) rotate(0.1deg);
+  }
+  100% {
+    /* End back at the starting position */
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/* Keyframes for glow pulse */
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(25px);
+  }
 }
 
 /* Social Icons Fixed Left */
@@ -239,6 +302,17 @@ export default {
 
 .social-icons svg:hover {
   transform: scale(1.2);
+}
+
+/* Architectural font styles */
+.intro {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.info {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
