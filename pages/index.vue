@@ -1,8 +1,11 @@
 <template>
+  <div>
+  <div class="border-right"></div>
   <div class="border-wrapper" ref="borderWrapper">
     
     <div class="border-bottom"></div>
-    <div class="border-right"></div>
+  
+    
 
     <b-row style="margin-left: 0;margin-right: 0;">
       <b-col md="4" class="relative group">
@@ -68,6 +71,7 @@
       </social-link>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -121,11 +125,7 @@ export default {
         content:
           "Murad Mursela is an amazing architect and graphic designer, passionate about creating logos, brochures, and visual identities for brands and projects."
       },
-      {
-        hid: "og:image",
-        name: "og:image",
-        content: require("@/assets/coding.png")
-      }
+
     ]
   },
 
@@ -145,14 +145,13 @@ export default {
 
 .border-wrapper {
   position: relative;
-  --border-size: 80px;
 }
 
 .border-bottom {
   position: absolute;
   left: 0;
   width: 100%;
-  height: var(--border-size);
+  height: 80px;
   background-image: url("@/assets/teletun.png");
   background-repeat: repeat-x;
   background-size: auto 100%;
@@ -168,27 +167,18 @@ export default {
   z-index: 1;
 }
 
-.border-left,
 .border-right {
   position: absolute;
-  top: 0;
-  z-index: 9999;
-  height: 100%;
-  width: var(--border-size);
+  height: 667px;
+  width: 80px;
   background-image: url("@/assets/teletun-min.png");
   background-repeat: repeat-y;
   background-size: 100% auto;
   background-position: center;
+  right: 0px; 
+  z-index: 1000;
 }
 
-.border-left {
-  left: calc(-1 * var(--border-size));
-}
-
-.border-right {
-  right: -1px; 
-  z-index: 1;
-}
 
 /* ----------------------------- */
 /* Avatar size + animation tweaks */
