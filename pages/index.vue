@@ -1,7 +1,7 @@
 <template>
   <div class="border-wrapper" ref="borderWrapper">
+    
     <div class="border-bottom"></div>
-
     <div class="border-right"></div>
 
     <b-row style="margin-left: 0;margin-right: 0;">
@@ -78,9 +78,6 @@ import FacebookIcon from "vue-ionicons/dist/logo-facebook.vue";
 import YoutubeIcon from "vue-ionicons/dist/logo-youtube.vue";
 import MailIcon from "vue-ionicons/dist/md-mail.vue";
 
-// Assuming 'social-link' component is globally registered or imported elsewhere
-// and that all assets (mi.png, coding.png, teletun.png, teletun-min.png) exist in @/assets
-
 export default {
   components: {
     GithubIcon,
@@ -134,8 +131,6 @@ export default {
 
   methods: {
     changeAvatar() {
-      // Note: This logic currently keeps the avatar the same on mouseenter/mouseleave.
-      // If you intended to swap it, you would update this logic.
       this.avatar =
         this.avatar === require("@/assets/mi.png")
           ? require("@/assets/mi.png")
@@ -169,7 +164,7 @@ export default {
 }
 
 .border-bottom {
-  bottom: 20px;
+  bottom: -30px;
   z-index: 1;
 }
 
@@ -191,15 +186,18 @@ export default {
 }
 
 .border-right {
-  /* moved inward a bit */
-  right: 20px; 
+  right: -1px; 
   z-index: 1;
 }
 
-
-/* Avatar glow and motion */
+/* ----------------------------- */
+/* Avatar size + animation tweaks */
+/* ----------------------------- */
 #avatar-img {
-  /* *** UPDATED ANIMATION RULE *** */
+  width: 280px;       /* smaller size */
+  height: 560px;
+  object-fit: cover;
+  border-radius: 50%;
   animation: subtle-float-and-shift 4s infinite ease-in-out alternate;
   filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.3));
 }
@@ -220,7 +218,6 @@ export default {
   animation: glow-pulse 2s infinite ease-in-out;
 }
 
-
 .group:hover #avatar-img {
   filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.5));
 }
@@ -231,45 +228,36 @@ export default {
 }
 
 /* ------------------------------------------- */
-/* *** UPDATED KEYFRAMES FOR AMAZING MOTION *** */
+/* Animation: subtle floating with smaller zoom */
 /* ------------------------------------------- */
-
 @keyframes subtle-float-and-shift {
   0% {
-    /* Start low and slightly left */
-    transform: translate(0px, 0px) rotate(0deg);
+    transform: scale(1.2) translate(0px, 0px) rotate(0deg);
   }
   15% {
-    /* Shift up and right, slight clockwise rotation */
-    transform: translate(1px, -1.5px) rotate(0.8deg);
+    transform: scale(1.2) translate(1px, -1.5px) rotate(0.8deg);
   }
   30% {
-    /* Dip down and further right, counter-clockwise rotation */
-    transform: translate(2px, 0.5px) rotate(-1deg);
+    transform: scale(1.2) translate(2px, 0.5px) rotate(-1deg);
   }
   45% {
-    /* Settle back towards center, minimal rotation */
-    transform: translate(0.5px, -0.5px) rotate(0.2deg);
+    transform: scale(1.2) translate(0.5px, -0.5px) rotate(0.2deg);
   }
   60% {
-    /* Float up and left, more rotation */
-    transform: translate(-1.5px, -1px) rotate(1.5deg);
+    transform: scale(1.2) translate(-1.5px, -1px) rotate(1.5deg);
   }
   75% {
-    /* Drop down sharply, less rotation */
-    transform: translate(-0.5px, 1px) rotate(-0.5deg);
+    transform: scale(1.2) translate(-0.5px, 1px) rotate(-0.5deg);
   }
   90% {
-    /* A small final upward bounce */
-    transform: translate(0.25px, -0.25px) rotate(0.1deg);
+    transform: scale(1.2) translate(0.25px, -0.25px) rotate(0.1deg);
   }
   100% {
-    /* End back at the starting position */
-    transform: translate(0px, 0px) rotate(0deg);
+    transform: scale(1.2) translate(0px, 0px) rotate(0deg);
   }
 }
 
-/* Keyframes for glow pulse */
+/* Glow pulse effect */
 @keyframes glow-pulse {
   0%, 100% {
     opacity: 0.6;
@@ -304,7 +292,7 @@ export default {
   transform: scale(1.2);
 }
 
-/* Architectural font styles */
+/* Font styles */
 .intro {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -315,12 +303,12 @@ export default {
   font-weight: 400;
 }
 
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .border-wrapper {
     --border-size: 40px;
   }
 
-  /* Hide borders */
   .border-bottom,
   .border-right,
   .border-left,
@@ -328,17 +316,15 @@ export default {
     display: none;
   }
 
-  /* Hide avatar image */
   #avatar-img {
-    display: none;
+    width: 140px;
+    height: 140px;
   }
 
-  /* Adjust columns for mobile */
   b-col {
     width: 100%;
   }
 
-  /* Social icons below content, horizontal */
   .social-icons {
     position: static;
     top: auto;
