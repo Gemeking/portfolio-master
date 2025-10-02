@@ -5,7 +5,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #fff;
-  background-image: url(../bg.svg);
+  
   background-attachment: fixed;
   color: #000;
 }

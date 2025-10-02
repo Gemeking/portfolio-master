@@ -1,9 +1,11 @@
 <template>
   <div class="border-wrapper" ref="borderWrapper">
-    <div class="border-top"></div>
+    <!-- Top & Bottom (horizontal pattern) -->
     <div class="border-bottom"></div>
-    <div class="border-left" :style="{ width: verticalWidth + 'px' }"></div>
-    <div class="border-right" :style="{ width: verticalWidth + 'px' }"></div>
+
+    <!-- Left & Right (vertical pattern) -->
+    <div class="border-right"></div>
+
     <b-row style="margin-left: 0;margin-right: 0;">
       <b-col md="4" class="relative group">
         <b-img
@@ -18,7 +20,7 @@
 
       <b-col md="8">
         <h2 class="intro animate__animated animate__fadeInUp animate__fast">
-          Hi 👋,
+          Hi,
           <br />I<span>'m Murad&nbsp;Mursela</span>.
         </h2>
 
@@ -38,38 +40,36 @@
           <b-button class="action-btn" to="/contact" variant="primary">
             Get In Touch
           </b-button>
-
-          <!-- .SOCIAL LINKS SECTION -->
-          <div
-            class="social-icons animate__animated animate__fadeInUp animate__delay-1s"
-          >
-            <social-link :to="socialLinks.github">
-              <GithubIcon />
-            </social-link>
-
-            <social-link :to="socialLinks.linkedin">
-              <LinkedinIcon />
-            </social-link>
-
-            <social-link :to="socialLinks.twitter">
-              <TwitterIcon />
-            </social-link>
-
-            <social-link :to="socialLinks.facebook">
-              <FacebookIcon />
-            </social-link>
-
-            <social-link :to="socialLinks.mail">
-              <MailIcon />
-            </social-link>
-
-            <social-link :to="socialLinks.youtube">
-              <YoutubeIcon />
-            </social-link>
-          </div>
         </div>
       </b-col>
     </b-row>
+
+    <!-- .SOCIAL LINKS SECTION (fixed left, vertical) -->
+    <div class="social-icons animate__animated animate__fadeInUp animate__delay-1s">
+      <social-link :to="socialLinks.github">
+        <GithubIcon />
+      </social-link>
+
+      <social-link :to="socialLinks.linkedin">
+        <LinkedinIcon />
+      </social-link>
+
+      <social-link :to="socialLinks.twitter">
+        <TwitterIcon />
+      </social-link>
+
+      <social-link :to="socialLinks.facebook">
+        <FacebookIcon />
+      </social-link>
+
+      <social-link :to="socialLinks.mail">
+        <MailIcon />
+      </social-link>
+
+      <social-link :to="socialLinks.youtube">
+        <YoutubeIcon />
+      </social-link>
+    </div>
   </div>
 </template>
 
@@ -101,8 +101,7 @@ export default {
         facebook: "https://facebook.com/muradmursela",
         mail: "mailto:murad@example.com",
         youtube: ""
-      },
-      verticalWidth: 0
+      }
     };
   },
 
@@ -140,18 +139,6 @@ export default {
           ? require("@/assets/mi.png")
           : require("@/assets/mi.png");
     }
-  },
-
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-      setTimeout(() => this.$nuxt.$loading.finish(), 500);
-
-      const root = this.$refs.borderWrapper;
-      const style = getComputedStyle(root);
-      const borderSize = parseFloat(style.getPropertyValue('--border-size'));
-      this.verticalWidth = root.clientHeight + 2 * borderSize;
-    });
   }
 };
 </script>
@@ -162,14 +149,13 @@ export default {
   --border-size: 80px;
 }
 
-/* Top and bottom borders */
-.border-top,
+
 .border-bottom {
   position: absolute;
   left: 0;
   width: 100%;
   height: var(--border-size);
-  background-image: url("@/assets/tiletu.png");
+  background-image: url("@/assets/teletun.png");
   background-repeat: repeat-x;
   background-size: auto 100%;
   background-position: center;
@@ -183,31 +169,35 @@ export default {
   bottom: calc(-1 * var(--border-size));
 }
 
-/* Vertical borders */
 .border-left,
 .border-right {
   position: absolute;
-  top: calc(-1 * var(--border-size));
-  height: var(--border-size);
-  background-image: url("@/assets/tiletu.png");
-  background-repeat: repeat-x;
-  background-size: auto 100%;
+  top: 0;
+  z-index: 9999;
+  height: 100%;
+  width: var(--border-size);
+  background-image: url("@/assets/teletun-min.png");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
   background-position: center;
 }
 
 .border-left {
-  left: 0;
-  transform: rotate(90deg);
-  transform-origin: top left;
+  left: calc(-1 * var(--border-size));
 }
 
 .border-right {
-  right: 0;
-  transform: rotate(90deg);
-  transform-origin: top right;
+  /* moved inward a bit */
+  right: 20px; 
+  z-index: 1;
+}
+.border-bottom{
+  bottom: 20px;
+  z-index: 1;
 }
 
-/* Glowing background behind transparent PNG avatar */
+
+/* Avatar glow */
 #avatar-img::before {
   content: "";
   position: absolute;
@@ -215,11 +205,11 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 9999px; /* same as rounded-full */
+  border-radius: 9999px;
   background: linear-gradient(135deg, #ff7f50, #ff1493, #8a2be2);
   filter: blur(20px);
   opacity: 0.6;
-  z-index: -1; /* behind the image */
+  z-index: -1;
   transition: all 0.5s ease;
 }
 
@@ -228,9 +218,69 @@ export default {
   opacity: 0.8;
 }
 
+/* Social Icons Fixed Left */
+.social-icons {
+  position: fixed;
+  top: 20%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.social-icons svg {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.social-icons svg:hover {
+  transform: scale(1.2);
+}
+
 @media (max-width: 768px) {
   .border-wrapper {
     --border-size: 40px;
+  }
+
+  /* Hide borders */
+  .border-bottom,
+  .border-right,
+  .border-left,
+  .border-top {
+    display: none;
+  }
+
+  /* Hide avatar image */
+  #avatar-img {
+    display: none;
+  }
+
+  /* Adjust columns for mobile */
+  b-col {
+    width: 100%;
+  }
+
+  /* Social icons below content, horizontal */
+  .social-icons {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    z-index: auto;
+  }
+
+  .social-icons svg {
+    width: 24px;
+    height: 24px;
   }
 }
 </style>
