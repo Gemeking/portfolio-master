@@ -1,12 +1,8 @@
 <template>
-  <div>
+<div>
   <div class="border-right"></div>
   <div class="border-wrapper" ref="borderWrapper">
-    
     <div class="border-bottom"></div>
-  
-    
-
     <b-row style="margin-left: 0;margin-right: 0;">
       <b-col md="4" class="relative group">
         <b-img
@@ -18,13 +14,11 @@
           class="rounded-full shadow-2xl p-4 transition-transform duration-500 group-hover:scale-105"
         />
       </b-col>
-
       <b-col md="8">
         <h2 class="intro animate__animated animate__fadeInUp animate__fast">
           Hi,
           <br />I<span>'m Murad&nbsp;Mursela</span>.
         </h2>
-
         <div class="col-md-10 info">
           An <b>architect</b> and <b>graphic designer</b>, passionate about
           creating beautiful and functional designs.<br />

@@ -119,14 +119,10 @@ export default {
   height: 60px; /* bigger logo */
   width: auto;
   padding: 8px;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .brand-logo:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 1);
 }
 
 /* Nav Styling */
