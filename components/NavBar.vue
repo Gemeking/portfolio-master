@@ -31,7 +31,6 @@
         <b-nav-item to="/">Home</b-nav-item>
         <b-nav-item to="/about">About</b-nav-item>
         <b-nav-item to="/projects">Projects</b-nav-item>
-        <b-nav-item to="/articles">Articles</b-nav-item>
         <b-nav-item to="/contact">Contact Me</b-nav-item>
 
         <!-- Theme Toggle -->
@@ -96,35 +95,28 @@ export default {
 </script>
 
 <style scoped>
-
 .border-right {
   position: fixed;
   height: 667px;
   width: 80px;
-  background-image: url("@/assets/teletun-min.png");
   background-size: 100% auto;
-
   right: 0px; 
   z-index: 1000;
 }
-
 /* Navbar Custom Height */
 .custom-navbar {
   height: 80px; /* increase navbar height */
   padding: 0 2rem;
 }
-
 /* Logo Styling */
 .brand-logo {
   height: 60px; /* bigger logo */
   width: auto;
   padding: 8px;
 }
-
 .brand-logo:hover {
   transform: scale(1.1);
 }
-
 /* Nav Styling */
 .navbar-nav {
   margin-left: 120px; /* adjust spacing for bigger navbar */
@@ -132,6 +124,9 @@ export default {
 @media screen and (max-width: 420px) {
   .navbar-nav {
     margin-left: 0px;
+  }
+  .border-right {
+    display:none;
   }
 }
 .nav-item {

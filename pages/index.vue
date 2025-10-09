@@ -31,7 +31,6 @@
           >
             Explore >
           </b-button>
-
           <b-button class="action-btn" to="/contact" variant="primary">
             Get In Touch
           </b-button>
@@ -281,6 +280,9 @@ export default {
   .border-wrapper {
     --border-size: 40px;
   }
+  #avatar-img {
+    display:none;
+  }
 
   .border-bottom,
   .border-right,
@@ -288,12 +290,6 @@ export default {
   .border-top {
     display: none;
   }
-
-  #avatar-img {
-    width: 140px;
-    height: 140px;
-  }
-
   b-col {
     width: 100%;
   }
