@@ -1,129 +1,166 @@
 <template>
-  <div class="about page  animate__animated animate__fadeIn">
-    <h2>Recent Project</h2>
+  <div class="about page animate__animated animate__fadeIn">
+    <h2>Recent Projects</h2>
     <div class="container">
-      <div class="row" v-for="(project, index) in projects" :key="index">
-        <div class="col-md-5">
-          <img
-            :src="project.image_cover"
-            :alt="project.title"
-            class="project-cover"
-          />
+      <div class="row align-items-center mb-5" v-for="(project, index) in projects" :key="index">
+        <div class="col-md-6">
+          <b-carousel
+            :id="'carousel-' + index"
+            controls
+            indicators
+            background="#ffffff"
+            img-width="1024"
+            img-height="480"
+            class="project-carousel"
+          >
+            <b-carousel-slide v-for="(image, imgIndex) in project.images" :key="imgIndex">
+              <template #img>
+                <img
+                  class="d-block w-100 project-image"
+                  :src="image"
+                  :alt="`${project.title} image ${imgIndex + 1}`"
+                />
+              </template>
+            </b-carousel-slide>
+          </b-carousel>
         </div>
-        <div class="col-md-5">
-          <h2 class="mt-3" style="text-align: left;">
+        <div class="col-md-6">
+          <h2 class="mt-3 mb-0" style="text-align: left;">
             {{ project.title }}
-            <hr class="dope" />
           </h2>
-          <b-card class="mt-3 mb-3 text-left text-dark">
+          <p class="text-muted mb-3">{{ project.category }}</p>
+          <hr class="dope" />
+          <b-card class="mt-3 mb-3 text-left text-dark border-0 shadow-sm">
             <p>{{ project.description }}</p>
-            <b-link :href="project.link"
-              >Check it out! <LinkIcon style="color: #000;"
-            /></b-link>
-            <hr />
-            <b-link :href="project.github_url"
-              >View source code <GithubIcon style="color: #000;"
-            /></b-link>
+            <b-link v-if="project.link" :href="project.link" target="_blank" class="mr-3">
+              Check it out! <LinkIcon style="color: #000;" />
+            </b-link>
+            <b-link v-if="project.github_url" :href="project.github_url" target="_blank">
+              View source code <GithubIcon style="color: #000;" />
+            </b-link>
           </b-card>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import LinkIcon from "vue-ionicons/dist/md-link.vue";
 import GithubIcon from "vue-ionicons/dist/logo-github.vue";
+import { BCarousel, BCarouselSlide } from "bootstrap-vue";
 
 export default {
   components: {
     GithubIcon,
-    LinkIcon
+    LinkIcon,
+    BCarousel,
+    BCarouselSlide,
   },
   data() {
     return {
       projects: [
         {
-          title: "Say-It",
-          tag: "Progressive Web App",
-          description:
-            "Typing sucks, say the words instead and the text will be generated for you.",
-          image_cover: require("@/assets/speak.jpg"),
-          github_url: "https://github.com/AsaoluElijah/say-it/",
-          link: "https://asaoluelijah.github.io/say-it"
-        },
-        {
-          title: "Proton",
-          tag: "Chrome-Extention, Coming Soon!",
-          description:
-            "Proton charges you with positivity when you open a new chrome tab, plus you also get worldwide latest info.",
-          image_cover: require("@/assets/illustration.jpg"),
+          title: "Luxury Interior Design",
+          category: "Interior Design",
+          description: "Modern and luxurious interior design for residential and commercial spaces.",
+          images: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLat8bZvhXD3ChSXyzGsFVh6qgplm1KhYPKA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLat8bZvhXD3ChSXyzGsFVh6qgplm1KhYPKA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLat8bZvhXD3ChSXyzGsFVh6qgplm1KhYPKA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLat8bZvhXD3ChSXyzGsFVh6qgplm1KhYPKA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLat8bZvhXD3ChSXyzGsFVh6qgplm1KhYPKA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLat8bZvhXD3ChSXyzGsFVh6qgplm1KhYPKA&s",
+          ],
           github_url: "",
-          link: ""
+          link: "YOUR_PROJECT_LINK_HERE",
         },
         {
-          title: "Qr-Generator",
-          tag: "Progressive Web App",
-          description:
-            "Easily share secret messages with friends by converting text to qrcode.",
-          image_cover: require("@/assets/qr-1.png"),
-          github_url: "https://github.com/AsaoluElijah/qrcode",
-          link: "https://asaoluelijah.github.io/qrcode/"
+          title: "Brand Identity for Startup",
+          category: "Graphic Design / Logo",
+          description: "Crafting a unique brand identity including logos, business cards, and social media graphics.",
+          images: [
+            "YOUR_FIRST_IMAGE_URL_HERE",
+            "YOUR_SECOND_IMAGE_URL_HERE",
+            "YOUR_THIRD_IMAGE_URL_HERE",
+          ],
+          github_url: "",
+          link: "YOUR_PROJECT_LINK_HERE",
+        },
+        {
+          title: "Creative Office Space",
+          category: "Interior Design",
+          description: "Designing functional and aesthetic office spaces to enhance creativity and productivity.",
+          images: [
+            "YOUR_FIRST_IMAGE_URL_HERE",
+            "YOUR_SECOND_IMAGE_URL_HERE",
+            "YOUR_THIRD_IMAGE_URL_HERE",
+          ],
+          github_url: "",
+          link: "YOUR_PROJECT_LINK_HERE",
         }
       ],
     };
   },
-  methods: {
-    isEven(n) {
-      if (n % 2 == 0) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  },
   head: {
-    title: "Recent Projects 💻 - Asaolu Elijah",
+    title: "Recent Projects 💻 - Architecture Designer",
     meta: [
       {
         hid: "description",
         name: "description",
         content:
-          "View all the recents open-sourced projects built with ♥ by Asaolu Elijah, open-sourced means this project source code are publicly available for everyone to use or modify."
+          "Explore the recent interior, graphic design, and branding projects by a passionate architecture designer."
       },
       {
         hid: "og:title",
         name: "og:title",
-        content: "Recent Projects 💻 - Asaolu Elijah"
+        content: "Recent Projects 💻 - Architecture Designer"
       },
       {
         property: "og:description",
         content:
-          "View all the recents open-sourced projects built with ♥ by Asaolu Elijah, open-sourced means this project source code are publicly available for everyone to use or modify."
+          "Explore the recent interior, graphic design, and branding projects by a passionate architecture designer."
       },
       {
         hid: "og:image",
         name: "og:image",
-        content: require("@/assets/man-computer.png")
+        content: "YOUR_DEFAULT_OG_IMAGE_URL"
       }
     ]
   }
 };
 </script>
+
 <style scoped>
 .row {
   margin-top: 70px;
 }
-.project-cover {
-  width: inherit;
-  border-radius: 3px;
+.project-carousel {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.project-image {
+  border-radius: 10px;
+  object-fit: cover;
+  height: 400px; /* Adjust height as needed for consistency */
 }
 hr.dope {
   border: 0;
   width: 90px;
   border-top: 2px solid #dc3545;
   text-align: left;
-  margin: initial;
-  margin-top: 7px;
-  margin-left: 5px;
+  margin: 10px 0;
+  margin-left: 0;
+}
+.text-muted {
+  font-size: 1rem;
+  font-style: italic;
+}
+.shadow-sm {
+  transition: box-shadow 0.3s ease;
+}
+.shadow-sm:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 </style>

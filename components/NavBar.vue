@@ -8,7 +8,6 @@
     :variant="themeMode === 'dark' ? 'dark' : 'light'"
     class="custom-navbar"
   >
-  
     <!-- Brand Logo -->
     <b-navbar-brand tag="h1" to="/" style="font-weight: bolder;">
       <img
@@ -17,7 +16,6 @@
         class="brand-logo"
       />
     </b-navbar-brand>
-
     <!-- Navbar Toggle for Mobile -->
     <b-navbar-toggle target="nav-collapse" style="border-radius: 0;" />
 
