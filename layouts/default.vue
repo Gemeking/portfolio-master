@@ -6,8 +6,4 @@
     </div>
   </div>
 </template>
-<style scoped>
-#app {
-  margin-top: 100px;
-}
-</style>
+
