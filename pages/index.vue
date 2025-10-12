@@ -432,7 +432,7 @@ body.dark .contact-icon {
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 5px;
   z-index: 1000;
 }
 
