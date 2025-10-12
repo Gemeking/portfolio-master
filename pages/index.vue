@@ -7,7 +7,7 @@
 
       <b-row class="main-row" no-gutters>
         <!-- Avatar Left -->
-        <b-col md="4" class="relative group">
+        <b-col md="4" class="relative group avatar-col">
           <b-img
             :src="avatar"
             id="avatar-img"
@@ -19,13 +19,13 @@
         </b-col>
 
         <!-- Intro Text -->
-        <b-col md="2" class="intro-section">
+        <b-col md="8" class="intro-section">
           <div class="text-content">
             <h2 class="intro animate__animated animate__fadeInUp animate__fast">
               Hi,<br />
               I<span>'m Murad&nbsp;Mursela </span>.
             </h2>
-            <div class="col-md-10 info">
+            <div class="info">
               An <b>architect</b> and <b>graphic designer</b>, passionate about
               creating beautiful and functional designs.<br />
               I specialise in designing <b>logos</b>, <b>brochures</b>, and
@@ -52,7 +52,7 @@
         <social-link :to="socialLinks.twitter"><TwitterIcon /></social-link>
         <social-link :to="socialLinks.facebook"><FacebookIcon /></social-link>
         <social-link :to="socialLinks.mail"><MailIcon /></social-link>
-        <social-link :to="socialLinks.youtube"><YoutubeIcon /></social-link>
+        <social-link :to="socialLinks.youtube" v-if="socialLinks.youtube"><YoutubeIcon /></social-link>
       </div>
 
       <!-- Background right overlay -->
@@ -227,6 +227,11 @@ body.dark .telegram-subscribe {
   width: 230px;
   background-color: #f9f9f9;
   color: #222;
+  transition: border-color 0.3s ease;
+}
+
+.telegram-subscribe input:focus {
+  border-color: #929292;
 }
 
 body.dark .telegram-subscribe input {
@@ -370,6 +375,22 @@ body.dark .contact-icon {
   flex: 0 0 800px;
   z-index: 3;
   margin-left: -200px;
+  padding: 20px;
+}
+
+.intro {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.info {
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.action-btn {
+  margin-top: 20px;
+  margin-right: 10px;
 }
 
 .bg-side {
@@ -448,7 +469,41 @@ body.dark .contact-icon {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  #avatar-img,
+  .main-row {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .avatar-col {
+    display: none; /* Hide avatar on mobile */
+  }
+
+  .intro-section {
+    justify-content: center;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .text-content {
+    flex: 1;
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .intro {
+    font-size: 2rem;
+  }
+
+  .info {
+    font-size: 1rem;
+  }
+
+  .action-btn {
+    width: 100%;
+    margin: 10px 0;
+  }
+
   .bg-side,
   .teletun-layer,
   .border-bottom,
@@ -457,58 +512,104 @@ body.dark .contact-icon {
   }
 
   .bottom-left-section {
+    position: static;
     flex-direction: column;
     align-items: center;
-    bottom: 15px;
-    left: 15px;
     gap: 15px;
+    padding: 20px;
+    bottom: auto;
+    left: auto;
+    z-index: auto;
   }
 
   .bottom-right-section {
-    flex-direction: column;
-    align-items: center;
-    bottom: 15px;
-    right: 15px;
+    display: none; /* Hide bottom-right logo on mobile to avoid duplication */
   }
 
   .brand-logo {
     height: 70px;
+    width: auto;
+  }
+
+  .telegram-subscribe {
+    align-items: center;
+    text-align: center;
   }
 
   .telegram-subscribe input,
   .telegram-subscribe button {
-    width: 180px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .telegram-subscribe button {
+    width: 100%;
+    max-width: 280px;
+    margin-top: 10px;
+  }
+
+  .slogan {
+    font-size: 12px; /* Adjusted for mobile */
+    text-align: center;
+    max-width: 90%;
+    margin: 20px auto;
+  }
+
+  .contact {
+    font-size: 14px;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .contact h2 {
+    font-size: 16px;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
+
+  .contact-icon {
+    width: 20px;
+    height: 20px;
   }
 
   .social-icons {
     position: static;
     flex-direction: row;
     justify-content: center;
-    margin-top: 20px;
+    gap: 15px;
+    margin: 20px 0;
+    transform: none;
+  }
+
+  .social-icons svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575px) {
+  .intro {
+    font-size: 1.8rem;
+  }
+
+  .info {
+    font-size: 0.9rem;
   }
 
   .slogan {
-    font-size: 10px; /* Even smaller on mobile */
-    text-align: center;
-    max-width: 200px;
+    font-size: 10px;
   }
 
   .contact {
     font-size: 12px;
-    text-align: center;
   }
 
-  .contact h2 {
-    font-size: 14px;
-  }
-
-  .contact-icon {
-    width: 18px;
-    height: 18px;
-  }
-
-  .contact-item {
-    justify-content: center;
+  .telegram-subscribe input,
+  .telegram-subscribe button {
+    font-size: 12px;
   }
 }
 </style>

@@ -1,55 +1,50 @@
 <template>
   <div>
-  <div class="border-right"></div>
-  <b-navbar
-    toggleable="lg"
-    fixed="top"
-    :type="themeMode === 'dark' ? 'dark' : 'light'"
-    :variant="themeMode === 'dark' ? 'dark' : 'light'"
-    class="custom-navbar"
-  >
-    <!-- Brand Logo -->
-    <b-navbar-brand tag="h1" to="/" style="font-weight: bolder;">
-      <img
-        :src="themeMode === 'dark' ? require('@/assets/mura-creatives-logo-white.png') : require('@/assets/mura-creatives-logo-black.png')"
-        alt="Mura Creatives Logo"
-        class="brand-logo"
-      />
-    </b-navbar-brand>
-    <!-- Navbar Toggle for Mobile -->
-    <b-navbar-toggle target="nav-collapse" style="border-radius: 0;" />
-
-    <!-- Collapsible Menu -->
-    <b-collapse
-      id="nav-collapse"
-      is-nav
-      class="animate__animated animate__fadeInDown"
+    <div class="border-right"></div>
+    <b-navbar
+      toggleable="lg"
+      fixed="top"
+      :type="themeMode === 'dark' ? 'dark' : 'light'"
+      :variant="themeMode === 'dark' ? 'dark' : 'light'"
+      class="custom-navbar"
     >
-      <b-navbar-nav>
-        <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/about">About</b-nav-item>
-        <b-nav-item to="/projects">Projects</b-nav-item>
-        <b-nav-item to="/contact">Contact Me</b-nav-item>
+      <!-- Navbar Toggle for Mobile -->
+      <b-navbar-toggle target="nav-collapse" style="border-radius: 0;" />
 
-        <!-- Theme Toggle -->
-        <b-nav-item
-          href="#"
-          @click="toggleDarkMode"
-          class="moon-icon"
-          title="Toggle Darkmode"
-        >
-          <SunnyIcon
-            v-if="themeMode === 'dark'"
-            style="color: #fff; font-size: 26px;"
-          />
-          <MoonIcon
-            v-else
-            style="color: #000; font-size: 26px;"
-          />
-        </b-nav-item>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
+      <!-- Collapsible Menu -->
+      <b-collapse
+        id="nav-collapse"
+        is-nav
+        class="animate__animated animate__fadeInDown"
+      >
+        <b-navbar-nav>
+          <!-- Theme Toggle -->
+          <b-nav-item
+            href="#"
+            @click="toggleDarkMode"
+            class="moon-icon"
+            title="Toggle Darkmode"
+          >
+            <SunnyIcon
+              v-if="themeMode === 'dark'"
+              style="color: #fff; font-size: 26px;"
+            />
+            <MoonIcon
+              v-else
+              style="color: #000; font-size: 26px;"
+            />
+          </b-nav-item>
+        </b-navbar-nav>
+
+        <b-navbar-nav class="mx-auto main-nav">
+          <b-nav-item to="/">Home</b-nav-item>
+          <b-nav-item to="/about">About</b-nav-item>
+          <b-nav-item to="/project">Project</b-nav-item>
+          <b-nav-item to="/contact">Contact Me</b-nav-item>
+          <b-nav-item to="/cv">CV</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
   </div>
 </template>
 
@@ -106,18 +101,9 @@ export default {
   height: 80px; /* increase navbar height */
   padding: 0 2rem;
 }
-/* Logo Styling */
-.brand-logo {
-  height: 60px; /* bigger logo */
-  width: auto;
-  padding: 8px;
-}
-.brand-logo:hover {
-  transform: scale(1.1);
-}
 /* Nav Styling */
 .navbar-nav {
-  margin-left: 120px; /* adjust spacing for bigger navbar */
+  margin-left: 0px; /* adjust spacing for bigger navbar */
 }
 @media screen and (max-width: 420px) {
   .navbar-nav {
@@ -132,12 +118,18 @@ export default {
   margin: 15px;
   border-radius: 3px;
 }
-.nav-link a {
-  color: #000 !important;
+.nav-link {
+  color: #000;
   text-decoration: none;
+}
+body.dark .nav-link {
+  color: #fff;
 }
 .nav-item:hover {
   background: rgb(243, 240, 240);
+}
+body.dark .nav-item:hover {
+  background: #333;
 }
 
 /* Theme Toggle */
@@ -149,5 +141,26 @@ export default {
 }
 .moon-icon:hover {
   background: transparent !important;
+}
+
+/* Thin line between nav items */
+.main-nav .nav-item + .nav-item {
+  border-left: 1px solid #dee2e6;
+  padding-left: 15px; /* Add some padding to separate */
+}
+
+body.dark .main-nav .nav-item + .nav-item {
+  border-left: 1px solid #444;
+}
+
+/* Shift main nav a little to the left */
+.main-nav {
+  transform: translateX(-20px);
+}
+
+@media (max-width: 991px) {
+  .main-nav {
+    transform: none; /* Reset on mobile */
+  }
 }
 </style>
