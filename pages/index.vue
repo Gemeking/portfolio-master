@@ -22,8 +22,9 @@
         <b-col md="8" class="intro-section">
           <div class="text-content">
             <h2 class="intro animate__animated animate__fadeInUp animate__fast">
-              Hi,<br />
-              I<span>'m Murad&nbsp;Mursela </span>.
+             
+             <h3> ARCHITECT | DESIGNER | INNOVATOR </h3>
+             <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MURAD MURSELA</h4>
             </h2>
             <div class="info">
               An <b>architect</b> and <b>graphic designer</b>, passionate about
@@ -59,7 +60,7 @@
       <div class="teletun-layer"></div>
     </div>
 
-    <!-- ✅ Bottom-left logo + Telegram subscribe section -->
+    <!-- Bottom-left logo + Telegram subscribe section -->
     <div class="bottom-left-section">
       <div class="brand-logo-container">
         <img :src="logoSrc" alt="Mura Creatives Logo" class="brand-logo" />
@@ -92,12 +93,7 @@
       </div>
     </div>
 
-    <!-- ✅ Bottom-right logo -->
-    <div class="bottom-right-section">
-      <div class="brand-logo-container">
-        <img :src="logoSrc" alt="Mura Creatives Logo" class="brand-logo" />
-      </div>
-    </div>
+    
   </div>
 </template>
 
@@ -171,46 +167,49 @@ export default {
 
 .bottom-left-section {
   position: fixed;
-  bottom: 25px;
-  left: 35px;
+  bottom: 2vh;
+  left: 2vw;
   display: flex;
   align-items: flex-start;
-  gap: 25px;
+  gap: 1.5vw;
   z-index: 9999;
+  bottom: 12vh;
 }
 
-/* ✅ Bottom-right section */
+/* Bottom-right section */
 .bottom-right-section {
   position: fixed;
-  bottom: 25px;
-  right: 0px;
+  bottom: 2vh;
+  right: 0;
   display: flex;
   align-items: flex-start;
   z-index: 9999;
 }
 
-/* ✅ Logo */
+/* Logo */
 .brand-logo {
-  height: 90px;
-  width: 160px;
+  height: 8vh;
+  width: 15vw;
+  max-width: 200px;
   transition: transform 0.2s ease, opacity 0.3s ease;
+  
 }
 .brand-logo:hover {
   transform: scale(1.1);
 }
 
-/* ✅ Telegram Subscribe Section */
+/* Telegram Subscribe Section */
 .telegram-subscribe {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.5vh;
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  color: #222; /* always visible in light */
+  font-size: 0.8rem;
+  color: #222;
 }
 
 body.dark .telegram-subscribe {
-  color: #fff; /* always visible in dark mode */
+  color: #fff;
 }
 
 .telegram-subscribe p {
@@ -219,12 +218,13 @@ body.dark .telegram-subscribe {
 }
 
 .telegram-subscribe input {
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   border: 1px solid #bbb;
-  border-radius: 6px;
+  border-radius: 0.4rem;
   outline: none;
-  font-size: 13px;
-  width: 230px;
+  font-size: 0.75rem;
+  width: 15vw;
+  max-width: 250px;
   background-color: #f9f9f9;
   color: #222;
   transition: border-color 0.3s ease;
@@ -241,14 +241,15 @@ body.dark .telegram-subscribe input {
 }
 
 .telegram-subscribe button {
-  background-color: #929292; /* Telegram blue */
+  background-color: #929292;
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 6px 0;
-  width: 50px; /* fixed width */
+  border-radius: 0.4rem;
+  padding: 0.4rem 0;
+  width: 3vw;
+  min-width: 50px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.8rem;
   font-weight: 600;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
@@ -258,76 +259,76 @@ body.dark .telegram-subscribe input {
   transform: scale(1.03);
 }
 
-/* ✅ Slogan styles - made smaller and improved */
+/* Slogan styles */
 .slogan {
   font-family: "Montserrat", sans-serif;
-  font-size: 16px; /* Smaller font size */
-  font-weight: 900; /* Slightly bolder for better readability */
+  font-size: 0.9rem;
+  font-weight: 900;
   text-transform: uppercase;
-  line-height: 1.3; /* Tighter line height for compactness */
-  letter-spacing: 0.5px; /* subtle letter spacing for better aesthetics */
-  color: #333; /* Darker color for light mode */
-  max-width: 550px; /* Limit width to prevent sprawling */
-  margin-top: 10px; /* Add some space from telegram section */
+  line-height: 1.3;
+  letter-spacing: 0.05rem;
+  color: #333;
+  max-width: 30vw;
+  margin-top: 1vh;
 }
 
 .slogan h3 {
   margin: 0;
   padding: 0;
-  font-size: inherit; /* Inherit from parent */
+  font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
 }
 
 body.dark .slogan {
-  color: #ddd; /* Lighter color for dark mode */
+  color: #ddd;
 }
 
-/* ✅ Contact styles - improved and beautiful */
+/* Contact styles */
 .contact {
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  color: #222; /* Default for light mode */
-  max-width: 200px; /* Limit width for better layout */
+  font-size: 0.8rem;
+  color: #222;
+  max-width: 12vw;
 }
 
 body.dark .contact {
-  color: #fff; /* For dark mode */
+  color: #fff;
 }
 
 .contact h2 {
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 0 0 8px 0;
-  letter-spacing: 1px;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.06rem;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 0.5vw;
+  margin-bottom: 0.4vh;
   transition: transform 0.2s ease;
 }
 
 .contact-item:hover {
-  transform: translateX(4px);
+  transform: translateX(0.2vw);
 }
 
 .contact-icon {
-  width: 20px;
-  height: 20px;
-  color: #555; /* Slightly muted for light mode */
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #555;
   transition: color 0.2s ease;
 }
 
 body.dark .contact-icon {
-  color: #ccc; /* Muted for dark mode */
+  color: #ccc;
 }
 
 .contact-item:hover .contact-icon {
-  color: #929292; /* Match telegram button color on hover */
+  color: #929292;
 }
 
 .contact a {
@@ -343,27 +344,32 @@ body.dark .contact-icon {
 /* General layout */
 .border-wrapper {
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allow scrolling if content overflows */
+  width: 100%;
+  min-height: 100vh; /* Changed to min-height to allow expansion */
 }
 
 .border-bottom {
-  padding-top: 10px;
+  padding-top: 1vh;
   position: absolute;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: 8vh;
   background-image: url("@/assets/teletun.png");
-  bottom: -30px;
+  background-size: cover;
+  bottom: -8vh;
   z-index: 1;
 }
 
 #avatar-img {
-  width: 350px;
-  height: 380px;
+  width: 30vw;
+  height: 47vh;
+  max-width: 400px;
+  max-height: 450px;
   object-fit: cover;
   animation: subtle-float-and-shift 4s infinite ease-in-out alternate;
-  filter: drop-shadow(10px 10px 10px rgba(140, 31, 243, 0.3));
-  margin-right: 100px;
+  filter: drop-shadow(0.5vw 0.5vw 0.5vw rgba(140, 31, 243, 0.3));
+  margin-right: 5vw;
 }
 
 .intro-section {
@@ -372,33 +378,35 @@ body.dark .contact-icon {
 }
 
 .text-content {
-  flex: 0 0 800px;
+  flex: 0 0 49vw;
   z-index: 3;
-  margin-left: -200px;
-  padding: 20px;
+  margin-left: -10vw;
+  padding: 2vw;
 }
 
 .intro {
-  font-size: 2.5rem;
+  font-size: 2.5vw;
   line-height: 1.2;
 }
 
 .info {
-  font-size: 1.2rem;
-  margin-top: 20px;
+  font-size: 1.2vw;
+  margin-top: 2vh;
 }
 
 .action-btn {
-  margin-top: 20px;
-  margin-right: 10px;
+  margin-top: 2vh;
+  margin-right: 1vw;
+  padding: 0.5rem 1.5rem;
+  font-size: 1vw;
 }
 
 .bg-side {
   position: fixed;
   top: 0;
-  right: 200px;
-  width: 400px;
-  height: 500px;
+  right: 10vw;
+  width: 20vw;
+  height: 70vh;
   background-image: url("@/assets/bg.png");
   background-repeat: no-repeat;
   background-position: right top;
@@ -411,8 +419,8 @@ body.dark .contact-icon {
 .teletun-layer {
   position: fixed;
   top: 0;
-  right: 160px;
-  width: 5%;
+  right: 8vw;
+  width: 5vw;
   height: 100vh;
   background-image: url("@/assets/teletun-min.png");
   background-repeat: no-repeat;
@@ -430,14 +438,14 @@ body.dark .contact-icon {
     transform: scale(1.2) translate(0, 0) rotate(0deg);
   }
   50% {
-    transform: scale(1.2) translate(2px, -2px) rotate(1deg);
+    transform: scale(1.2) translate(0.2vw, -0.2vh) rotate(1deg);
   }
 }
 
 @keyframes slide-in-right {
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(5vw);
   }
   to {
     opacity: 1;
@@ -448,18 +456,18 @@ body.dark .contact-icon {
 /* Social Icons */
 .social-icons {
   position: fixed;
-  top: 20%;
-  left: 20px;
+  top: 20vh;
+  left: 1.5vw;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.5vh;
   z-index: 1000;
 }
 
 .social-icons svg {
-  width: 28px;
-  height: 28px;
+  width: 1.5rem;
+  height: 1.5rem;
   cursor: pointer;
   transition: transform 0.3s;
 }
@@ -467,28 +475,19 @@ body.dark .contact-icon {
   transform: scale(1.2);
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .main-row {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+/* Media query for widths not exactly 1280px - hide specific images */
+@media (min-width: 1281px), (max-width: 1279px) {
+  .border-bottom,
+  .bg-side,
+  .teletun-layer {
+    display: none;
   }
 
-  .avatar-col {
-    display: none; /* Hide avatar on mobile */
-  }
-
-  .intro-section {
-    justify-content: center;
-    text-align: center;
-    margin-left: 0;
-  }
-
+  /* Adjustments for other elements to look good */
   .text-content {
-    flex: 1;
     margin-left: 0;
-    padding: 10px;
+    padding: 1vw;
+    flex: 1;
   }
 
   .intro {
@@ -500,8 +499,108 @@ body.dark .contact-icon {
   }
 
   .action-btn {
+    font-size: 0.9rem;
+  }
+
+  #avatar-img {
+    width: 25vw;
+    height: auto;
+    max-width: 350px;
+    margin-right: 2vw;
+  }
+
+  .bottom-left-section {
+    gap: 1vw;
+    bottom: 5vh;
+  }
+
+  .brand-logo {
+    height: 6vh;
+    width: auto;
+    max-width: 150px;
+  }
+
+  .telegram-subscribe {
+    font-size: 0.7rem;
+  }
+
+  .telegram-subscribe input {
+    width: 12vw;
+    max-width: 200px;
+    font-size: 0.7rem;
+  }
+
+  .telegram-subscribe button {
+    width: 4vw;
+    min-width: 40px;
+    font-size: 0.7rem;
+  }
+
+  .slogan {
+    font-size: 0.8rem;
+    max-width: 25vw;
+  }
+
+  .contact {
+    font-size: 0.7rem;
+    max-width: 10vw;
+  }
+
+  .contact h2 {
+    font-size: 0.8rem;
+  }
+
+  .contact-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .social-icons {
+    gap: 0.4vh;
+  }
+
+  .social-icons svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+/* Mobile Responsive - already present, but enhanced for better flow */
+@media (max-width: 768px) {
+  .main-row {
+    flex-direction: column;
+    align-items: center;
+    padding: 2vw;
+  }
+
+  .avatar-col {
+    display: none;
+  }
+
+  .intro-section {
+    justify-content: center;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .text-content {
+    flex: 1;
+    margin-left: 0;
+    padding: 2vw;
+  }
+
+  .intro {
+    font-size: 4vw;
+  }
+
+  .info {
+    font-size: 2.5vw;
+  }
+
+  .action-btn {
     width: 100%;
-    margin: 10px 0;
+    margin: 2vh 0;
+    font-size: 2.5vw;
   }
 
   .bg-side,
@@ -515,20 +614,21 @@ body.dark .contact-icon {
     position: static;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding: 20px;
+    gap: 2vh;
+    padding: 2vw;
     bottom: auto;
     left: auto;
     z-index: auto;
   }
 
   .bottom-right-section {
-    display: none; /* Hide bottom-right logo on mobile to avoid duplication */
+    display: none;
   }
 
   .brand-logo {
-    height: 70px;
+    height: 7vh;
     width: auto;
+    max-width: 150px;
   }
 
   .telegram-subscribe {
@@ -539,30 +639,31 @@ body.dark .contact-icon {
   .telegram-subscribe input,
   .telegram-subscribe button {
     width: 100%;
-    max-width: 280px;
+    max-width: 80vw;
+    font-size: 2.5vw;
   }
 
   .telegram-subscribe button {
     width: 100%;
-    max-width: 280px;
-    margin-top: 10px;
+    max-width: 80vw;
+    margin-top: 1vh;
   }
 
   .slogan {
-    font-size: 12px; /* Adjusted for mobile */
+    font-size: 2vw;
     text-align: center;
-    max-width: 90%;
-    margin: 20px auto;
+    max-width: 90vw;
+    margin: 2vh auto;
   }
 
   .contact {
-    font-size: 14px;
+    font-size: 2vw;
     text-align: center;
-    max-width: 90%;
+    max-width: 90vw;
   }
 
   .contact h2 {
-    font-size: 16px;
+    font-size: 2.5vw;
   }
 
   .contact-item {
@@ -570,46 +671,54 @@ body.dark .contact-icon {
   }
 
   .contact-icon {
-    width: 20px;
-    height: 20px;
+    width: 3vw;
+    height: 3vw;
   }
 
   .social-icons {
     position: static;
     flex-direction: row;
     justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+    gap: 2vw;
+    margin: 2vh 0;
     transform: none;
   }
 
   .social-icons svg {
-    width: 32px;
-    height: 32px;
+    width: 5vw;
+    height: 5vw;
   }
 }
 
 /* Extra small devices (phones, less than 576px) */
 @media (max-width: 575px) {
   .intro {
-    font-size: 1.8rem;
+    font-size: 5vw;
   }
 
   .info {
-    font-size: 0.9rem;
+    font-size: 3vw;
   }
 
   .slogan {
-    font-size: 10px;
+    font-size: 2.5vw;
   }
 
   .contact {
-    font-size: 12px;
+    font-size: 2.5vw;
   }
 
   .telegram-subscribe input,
   .telegram-subscribe button {
-    font-size: 12px;
+    font-size: 3vw;
+  }
+}
+
+/* For same width (around 1280px) but smaller height: allow scrolling by using min-height */
+@media (min-width: 1280px) and (max-height: 1023px) {
+  .border-wrapper {
+    min-height: auto; /* Let it expand naturally */
+    height: auto; /* Allow height to grow beyond viewport */
   }
 }
 </style>
