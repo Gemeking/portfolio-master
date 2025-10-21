@@ -405,13 +405,13 @@ body.dark .contact-icon {
   position: fixed;
   top: 0;
   right: 10vw;
-  width: 20vw;
-  height: 70vh;
+  width: 25vw;
+  height: 90vh;
   background-image: url("@/assets/bg.png");
   background-repeat: no-repeat;
   background-position: right top;
   background-size: cover;
-  z-index: 9998;
+  
   pointer-events: none;
   animation: slide-in-right 1.2s ease-out;
 }
