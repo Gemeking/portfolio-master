@@ -22,7 +22,6 @@
         <b-col md="8" class="intro-section">
           <div class="text-content">
             <h2 class="intro animate__animated animate__fadeInUp animate__fast">
-             
              <h3> ARCHITECT | DESIGNER | INNOVATOR </h3>
              <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MURAD MURSELA</h4>
             </h2>
@@ -482,48 +481,39 @@ body.dark .contact-icon {
   .teletun-layer {
     display: none;
   }
-
   /* Adjustments for other elements to look good */
   .text-content {
     margin-left: 0;
     padding: 1vw;
     flex: 1;
   }
-
   .intro {
     font-size: 2rem;
   }
-
   .info {
     font-size: 1rem;
   }
-
   .action-btn {
     font-size: 0.9rem;
   }
-
   #avatar-img {
     width: 25vw;
     height: auto;
     max-width: 350px;
     margin-right: 2vw;
   }
-
   .bottom-left-section {
     gap: 1vw;
     bottom: 5vh;
   }
-
   .brand-logo {
     height: 6vh;
     width: auto;
     max-width: 150px;
   }
-
   .telegram-subscribe {
     font-size: 0.7rem;
   }
-
   .telegram-subscribe input {
     width: 12vw;
     max-width: 200px;
@@ -535,36 +525,29 @@ body.dark .contact-icon {
     min-width: 40px;
     font-size: 0.7rem;
   }
-
   .slogan {
     font-size: 0.8rem;
     max-width: 25vw;
   }
-
   .contact {
     font-size: 0.7rem;
     max-width: 10vw;
   }
-
   .contact h2 {
     font-size: 0.8rem;
   }
-
   .contact-icon {
     width: 1rem;
     height: 1rem;
   }
-
   .social-icons {
     gap: 0.4vh;
   }
-
   .social-icons svg {
     width: 1.2rem;
     height: 1.2rem;
   }
 }
-
 /* Mobile Responsive - already present, but enhanced for better flow */
 @media (max-width: 768px) {
   .main-row {
@@ -572,44 +555,36 @@ body.dark .contact-icon {
     align-items: center;
     padding: 2vw;
   }
-
   .avatar-col {
     display: none;
   }
-
   .intro-section {
     justify-content: center;
     text-align: center;
     margin-left: 0;
   }
-
   .text-content {
     flex: 1;
     margin-left: 0;
     padding: 2vw;
   }
-
   .intro {
     font-size: 4vw;
   }
-
   .info {
     font-size: 2.5vw;
   }
-
   .action-btn {
     width: 100%;
     margin: 2vh 0;
     font-size: 2.5vw;
   }
-
   .bg-side,
   .teletun-layer,
   .border-bottom,
   .border-right {
     display: none;
   }
-
   .bottom-left-section {
     position: static;
     flex-direction: column;
@@ -620,56 +595,46 @@ body.dark .contact-icon {
     left: auto;
     z-index: auto;
   }
-
   .bottom-right-section {
     display: none;
   }
-
   .brand-logo {
     height: 7vh;
     width: auto;
     max-width: 150px;
   }
-
   .telegram-subscribe {
     align-items: center;
     text-align: center;
   }
-
   .telegram-subscribe input,
   .telegram-subscribe button {
     width: 100%;
     max-width: 80vw;
     font-size: 2.5vw;
   }
-
   .telegram-subscribe button {
     width: 100%;
     max-width: 80vw;
     margin-top: 1vh;
   }
-
   .slogan {
     font-size: 2vw;
     text-align: center;
     max-width: 90vw;
     margin: 2vh auto;
   }
-
   .contact {
     font-size: 2vw;
     text-align: center;
     max-width: 90vw;
   }
-
   .contact h2 {
     font-size: 2.5vw;
   }
-
   .contact-item {
     justify-content: center;
   }
-
   .contact-icon {
     width: 3vw;
     height: 3vw;
@@ -707,13 +672,11 @@ body.dark .contact-icon {
   .contact {
     font-size: 2.5vw;
   }
-
   .telegram-subscribe input,
   .telegram-subscribe button {
     font-size: 3vw;
   }
 }
-
 /* For same width (around 1280px) but smaller height: allow scrolling by using min-height */
 @media (min-width: 1280px) and (max-height: 1023px) {
   .border-wrapper {
