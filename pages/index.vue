@@ -356,19 +356,20 @@ body.dark .contact-icon {
   height: 8vh;
   background-image: url("@/assets/teletun.png");
   background-size: cover;
-  bottom: -8vh;
+  bottom: -4vh;
   z-index: 1;
 }
 
 #avatar-img {
   width: 30vw;
-  height: 47vh;
+  height: 67vh;
   max-width: 400px;
   max-height: 450px;
   object-fit: cover;
   animation: subtle-float-and-shift 4s infinite ease-in-out alternate;
   filter: drop-shadow(0.5vw 0.5vw 0.5vw rgba(140, 31, 243, 0.3));
   margin-right: 5vw;
+  z-index:99999;
 }
 
 .intro-section {
@@ -475,79 +476,7 @@ body.dark .contact-icon {
 }
 
 /* Media query for widths not exactly 1280px - hide specific images */
-@media (min-width: 1281px), (max-width: 1279px) {
-  .border-bottom,
-  .bg-side,
-  .teletun-layer {
-    display: none;
-  }
-  /* Adjustments for other elements to look good */
-  .text-content {
-    margin-left: 0;
-    padding: 1vw;
-    flex: 1;
-  }
-  .intro {
-    font-size: 2rem;
-  }
-  .info {
-    font-size: 1rem;
-  }
-  .action-btn {
-    font-size: 0.9rem;
-  }
-  #avatar-img {
-    width: 25vw;
-    height: auto;
-    max-width: 350px;
-    margin-right: 2vw;
-  }
-  .bottom-left-section {
-    gap: 1vw;
-    bottom: 5vh;
-  }
-  .brand-logo {
-    height: 6vh;
-    width: auto;
-    max-width: 150px;
-  }
-  .telegram-subscribe {
-    font-size: 0.7rem;
-  }
-  .telegram-subscribe input {
-    width: 12vw;
-    max-width: 200px;
-    font-size: 0.7rem;
-  }
 
-  .telegram-subscribe button {
-    width: 4vw;
-    min-width: 40px;
-    font-size: 0.7rem;
-  }
-  .slogan {
-    font-size: 0.8rem;
-    max-width: 25vw;
-  }
-  .contact {
-    font-size: 0.7rem;
-    max-width: 10vw;
-  }
-  .contact h2 {
-    font-size: 0.8rem;
-  }
-  .contact-icon {
-    width: 1rem;
-    height: 1rem;
-  }
-  .social-icons {
-    gap: 0.4vh;
-  }
-  .social-icons svg {
-    width: 1.2rem;
-    height: 1.2rem;
-  }
-}
 /* Mobile Responsive - already present, but enhanced for better flow */
 @media (max-width: 768px) {
   .main-row {
@@ -648,27 +577,22 @@ body.dark .contact-icon {
     margin: 2vh 0;
     transform: none;
   }
-
   .social-icons svg {
     width: 5vw;
     height: 5vw;
   }
 }
-
 /* Extra small devices (phones, less than 576px) */
 @media (max-width: 575px) {
   .intro {
     font-size: 5vw;
   }
-
   .info {
     font-size: 3vw;
   }
-
   .slogan {
     font-size: 2.5vw;
   }
-
   .contact {
     font-size: 2.5vw;
   }
