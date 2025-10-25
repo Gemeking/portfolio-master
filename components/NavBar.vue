@@ -39,7 +39,7 @@
         <b-navbar-nav class="mx-auto main-nav">
           <b-nav-item to="/">Home</b-nav-item>
           <b-nav-item to="/about">About</b-nav-item>
-          <b-nav-item to="/project">Project</b-nav-item>
+          <b-nav-item to="/projects">Projects</b-nav-item>
           <b-nav-item to="/contact">Contact Me</b-nav-item>
           <b-nav-item to="/cv">CV</b-nav-item>
         </b-navbar-nav>
