@@ -162,7 +162,7 @@ export default {
             "Kids Bedroom",
           ],
           // ✅ use static file path (not require)
-          images: Array.from({ length: 18 }, (_, i) => `/id1/picture${i + 1}.png`),
+          images: Array.from({ length: 17 }, (_, i) => `/id1/${i + 1}.JPG`),
           github_url: "",
           link: "",
         },
@@ -172,7 +172,7 @@ export default {
           description:
             "A curated collection of 11 images showcasing innovative kitchen designs, focusing on modern layouts, sleek finishes, and functional aesthetics tailored for culinary spaces.",
           areas: ["Main Kitchen", "Breakfast Nook", "Pantry Area"],
-          images: Array.from({ length: 11 }, (_, i) => `/id2/picture${i + 19}.png`),
+          images: Array.from({ length: 11 }, (_, i) => `/id2/${i + 1}.JPG`),
           github_url: "",
           link: "",
         },
