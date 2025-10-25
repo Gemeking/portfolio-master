@@ -41,6 +41,7 @@
           <hr class="dope" />
           <b-card class="mt-3 mb-3 text-left text-dark border-0 shadow-sm">
             <p>{{ project.description }}</p>
+
             <div v-if="project.areas" class="areas-section">
               <h5 class="mb-2">Featured Areas:</h5>
               <ul class="areas-list">
@@ -49,6 +50,7 @@
                 </li>
               </ul>
             </div>
+
             <b-button
               v-if="project.title === 'Interior 1' || project.title === 'Interior 2'"
               variant="danger"
@@ -80,7 +82,7 @@
       </div>
     </div>
 
-    <!-- MODAL POPUP GALLERY -->
+    <!-- GALLERY MODAL -->
     <b-modal
       v-model="showGallery"
       size="xl"
@@ -101,7 +103,7 @@
       </div>
     </b-modal>
 
-    <!-- LIGHTBOX MODAL FOR SINGLE LARGE IMAGE VIEW -->
+    <!-- LIGHTBOX VIEW -->
     <b-modal
       v-model="showLightbox"
       hide-header
@@ -111,9 +113,6 @@
       modal-class="lightbox-modal"
       body-class="p-0 bg-dark"
       content-class="border-0 rounded-0"
-      :hide-backdrop="false"
-      no-close-on-esc
-      no-close-on-backdrop
     >
       <div class="lightbox-arrow left" @click="prevImage">‹</div>
       <div class="lightbox-arrow right" @click="nextImage">›</div>
@@ -138,14 +137,7 @@ import GithubIcon from "vue-ionicons/dist/logo-github.vue";
 import { BCarousel, BCarouselSlide, BModal, BButton } from "bootstrap-vue";
 
 export default {
-  components: {
-    GithubIcon,
-    LinkIcon,
-    BCarousel,
-    BCarouselSlide,
-    BModal,
-    BButton,
-  },
+  components: { GithubIcon, LinkIcon, BCarousel, BCarouselSlide, BModal, BButton },
   data() {
     return {
       showGallery: false,
@@ -169,26 +161,8 @@ export default {
             "Master Bedroom",
             "Kids Bedroom",
           ],
-          images: [
-            require('@/static/id1/picture1.png'),
-            require('@/static/id1/picture2.png'),
-            require('@/static/id1/picture3.png'),
-            require('@/static/id1/picture4.png'),
-            require('@/static/id1/picture5.png'),
-            require('@/static/id1/picture6.png'),
-            require('@/static/id1/picture7.png'),
-            require('@/static/id1/picture8.png'),
-            require('@/static/id1/picture9.png'),
-            require('@/static/id1/picture10.png'),
-            require('@/static/id1/picture11.png'),
-            require('@/static/id1/picture12.png'),
-            require('@/static/id1/picture13.png'),
-            require('@/static/id1/picture14.png'),
-            require('@/static/id1/picture15.png'),
-            require('@/static/id1/picture16.png'),
-            require('@/static/id1/picture17.png'),
-            require('@/static/id1/picture18.png'),
-          ],
+          // ✅ use static file path (not require)
+          images: Array.from({ length: 18 }, (_, i) => `/id1/picture${i + 1}.png`),
           github_url: "",
           link: "",
         },
@@ -197,24 +171,8 @@ export default {
           category: "Kitchen Design",
           description:
             "A curated collection of 11 images showcasing innovative kitchen designs, focusing on modern layouts, sleek finishes, and functional aesthetics tailored for culinary spaces.",
-          areas: [
-            "Main Kitchen",
-            "Breakfast Nook",
-            "Pantry Area",
-          ],
-          images: [
-            require('@/static/id2/picture19.png'),
-            require('@/static/id2/picture20.png'),
-            require('@/static/id2/picture21.png'),
-            require('@/static/id2/picture22.png'),
-            require('@/static/id2/picture23.png'),
-            require('@/static/id2/picture24.png'),
-            require('@/static/id2/picture25.png'),
-            require('@/static/id2/picture26.png'),
-            require('@/static/id2/picture27.png'),
-            require('@/static/id2/picture28.png'),
-            require('@/static/id2/picture29.png'),
-          ],
+          areas: ["Main Kitchen", "Breakfast Nook", "Pantry Area"],
+          images: Array.from({ length: 11 }, (_, i) => `/id2/picture${i + 19}.png`),
           github_url: "",
           link: "",
         },
@@ -325,21 +283,18 @@ hr.dope {
   line-height: 1rem;
 }
 
-/* Popup gallery styling */
+/* Popup gallery */
 .gallery-modal .modal-dialog {
   max-width: 90%;
 }
-
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 15px;
 }
-
 .gallery-item {
   cursor: pointer;
 }
-
 .gallery-item img {
   width: 100%;
   height: 250px;
@@ -347,44 +302,23 @@ hr.dope {
   border-radius: 12px;
   transition: transform 0.3s ease;
 }
-
 .gallery-item img:hover {
   transform: scale(1.05);
 }
 
-/* Lightbox modal styling */
+/* Lightbox modal */
 .lightbox-modal .modal-content {
   background: #000;
   border: none;
   height: 98vh;
-  max-height: 98vh;
   border-radius: 0;
 }
-
-.lightbox-modal .modal-body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 0;
-}
-
 .lightbox-img {
   max-width: 92vw;
   max-height: 78vh;
   object-fit: contain;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 }
-
-.lightbox-caption {
-  margin-top: 12px;
-  font-size: 1.15rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
 .lightbox-arrow {
   position: absolute;
   top: 50%;
@@ -393,24 +327,18 @@ hr.dope {
   color: #fff;
   cursor: pointer;
   opacity: 0.65;
-  transition: opacity 0.25s ease;
   user-select: none;
-  font-weight: 100;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: opacity 0.25s ease;
 }
-
 .lightbox-arrow:hover {
   opacity: 1;
 }
-
 .lightbox-arrow.left {
   left: 18px;
 }
-
 .lightbox-arrow.right {
   right: 18px;
 }
-
 .lightbox-close {
   position: absolute;
   top: 18px;
@@ -421,11 +349,14 @@ hr.dope {
   opacity: 0.65;
   transition: opacity 0.25s ease;
   user-select: none;
-  font-weight: 300;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
-
 .lightbox-close:hover {
   opacity: 1;
+}
+.lightbox-caption {
+  margin-top: 12px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 </style>
