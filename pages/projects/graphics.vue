@@ -195,7 +195,7 @@ export default {
           description:
             "A selection of 2 unique T-shirt design concepts emphasizing modern vector art and cultural expression.",
           areas: ["Streetwear", "Minimal Design", "Graphic Print"],
-          images: Array.from({ length: 2 }, (_, i) => `/tshirt/${i + 1}.JPG`),
+          images: Array.from({ length: 5 }, (_, i) => `/tshirt/${i + 1}.JPG`),
           github_url: "",
           link: "",
         },
