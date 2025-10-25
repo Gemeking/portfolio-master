@@ -21,10 +21,14 @@
         <!-- Intro Text -->
         <b-col md="8" class="intro-section">
           <div class="text-content">
-            <h2 class="intro animate__animated animate__fadeInUp animate__fast">
-              <h3>ARCHITECT | DESIGNER | INNOVATOR</h3>
-              <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MURAD MURSELA</h4>
-            </h2>
+            <div class="flex flex-col items-center justify-center animate__animated animate__fadeInUp animate__fast mt-12">
+  <h3 class="text-2xl md:text-4xl font-semibold text-center">
+    ARCHITECT | DESIGNER | INNOVATOR
+  </h3>
+  <h4 class="text-xl md:text-2xl font-medium text-center mt-2">
+    MURAD MURSELA
+  </h4>
+</div>
             <div class="info">
               An <b>architect</b> and <b>graphic designer</b>, passionate about
               creating beautiful and functional designs.<br />
