@@ -170,7 +170,11 @@ export default {
   align-items: flex-start;
   gap: 1.5vw;
   z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.3); /* semi-transparent black */
+  padding: 0.5rem 1rem; /* optional, for spacing around content */
+  border-radius: 5px; /* optional, for rounded corners */
 }
+
 
 /* Logo */
 .brand-logo {
@@ -191,7 +195,7 @@ export default {
   gap: 0.5vh;
   font-family: "Montserrat", sans-serif;
   font-size: 0.8rem;
-  color: #222;
+  color: #ffffff;
 }
 
 body.dark .telegram-subscribe {
@@ -253,7 +257,7 @@ body.dark .telegram-subscribe input {
   text-transform: uppercase;
   line-height: 1.3;
   letter-spacing: 0.05rem;
-  color: #333;
+  color: #ffffff;
   max-width: 30vw;
   margin-top: 1vh;
 }
@@ -274,7 +278,7 @@ body.dark .slogan {
 .contact {
   font-family: "Montserrat", sans-serif;
   font-size: 0.8rem;
-  color: #222;
+  color: #ffffff;
   max-width: 12vw;
 }
 
