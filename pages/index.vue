@@ -22,8 +22,8 @@
         <b-col md="8" class="intro-section">
           <div class="text-content">
             <h2 class="intro animate__animated animate__fadeInUp animate__fast">
-             <h3> ARCHITECT | DESIGNER | INNOVATOR </h3>
-             <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MURAD MURSELA</h4>
+              <h3>ARCHITECT | DESIGNER | INNOVATOR</h3>
+              <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MURAD MURSELA</h4>
             </h2>
             <div class="info">
               An <b>architect</b> and <b>graphic designer</b>, passionate about
@@ -76,8 +76,8 @@
       </div>
       <div class="slogan">
         <h3>THE DIFFERENCE BETWEEN</h3>
-        <h3> GOOD AND BAD</h3>
-        <h3> ARCHITECTURE IS THE TIME YOU SPEND YOUR TIME ON IT</h3>
+        <h3>GOOD AND BAD</h3>
+        <h3>ARCHITECTURE IS THE TIME YOU SPEND ON IT</h3>
       </div>
       <div class="contact">
         <h2>Contact</h2>
@@ -91,8 +91,6 @@
         </div>
       </div>
     </div>
-
-    
   </div>
 </template>
 
@@ -172,17 +170,6 @@ export default {
   align-items: flex-start;
   gap: 1.5vw;
   z-index: 9999;
-  bottom: 12vh;
-}
-
-/* Bottom-right section */
-.bottom-right-section {
-  position: fixed;
-  bottom: 2vh;
-  right: 0;
-  display: flex;
-  align-items: flex-start;
-  z-index: 9999;
 }
 
 /* Logo */
@@ -191,8 +178,8 @@ export default {
   width: 15vw;
   max-width: 200px;
   transition: transform 0.2s ease, opacity 0.3s ease;
-  
 }
+
 .brand-logo:hover {
   transform: scale(1.1);
 }
@@ -245,8 +232,8 @@ body.dark .telegram-subscribe input {
   border: none;
   border-radius: 0.4rem;
   padding: 0.4rem 0;
-  width: 3vw;
-  min-width: 50px;
+  width: 5vw;
+  min-width: 60px;
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 600;
@@ -343,9 +330,9 @@ body.dark .contact-icon {
 /* General layout */
 .border-wrapper {
   position: relative;
-  overflow: visible; /* Allow scrolling if content overflows */
+  overflow: visible;
   width: 100%;
-  min-height: 100vh; /* Changed to min-height to allow expansion */
+  min-height: 100vh;
 }
 
 .border-bottom {
@@ -369,7 +356,7 @@ body.dark .contact-icon {
   animation: subtle-float-and-shift 4s infinite ease-in-out alternate;
   filter: drop-shadow(0.5vw 0.5vw 0.5vw rgba(140, 31, 243, 0.3));
   margin-right: 5vw;
-  z-index:99999;
+  z-index: 99999;
 }
 
 .intro-section {
@@ -411,7 +398,6 @@ body.dark .contact-icon {
   background-repeat: no-repeat;
   background-position: right top;
   background-size: cover;
-  
   pointer-events: none;
   animation: slide-in-right 1.2s ease-out;
 }
@@ -471,141 +457,253 @@ body.dark .contact-icon {
   cursor: pointer;
   transition: transform 0.3s;
 }
+
 .social-icons svg:hover {
   transform: scale(1.2);
 }
 
-/* Media query for widths not exactly 1280px - hide specific images */
+/* Tablet Responsive (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .border-wrapper {
+    min-height: 100vh;
+    height: auto;
+  }
 
-/* Mobile Responsive - already present, but enhanced for better flow */
-@media (max-width: 768px) {
   .main-row {
     flex-direction: column;
     align-items: center;
-    padding: 2vw;
+    padding: 4vw;
   }
+
   .avatar-col {
-    display: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
   }
+
+  #avatar-img {
+    width: 40vw;
+    height: 40vh;
+    max-width: 300px;
+    max-height: 300px;
+    margin-right: 0;
+  }
+
   .intro-section {
     justify-content: center;
     text-align: center;
     margin-left: 0;
   }
+
   .text-content {
     flex: 1;
     margin-left: 0;
-    padding: 2vw;
+    padding: 4vw;
   }
+
   .intro {
     font-size: 4vw;
   }
+
   .info {
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
+
   .action-btn {
-    width: 100%;
-    margin: 2vh 0;
-    font-size: 2.5vw;
+    margin: 2vh 1vw;
+    padding: 0.6rem 2rem;
+    font-size: 1.8vw;
   }
+
   .bg-side,
   .teletun-layer,
   .border-bottom,
   .border-right {
     display: none;
   }
+
   .bottom-left-section {
     position: static;
     flex-direction: column;
     align-items: center;
     gap: 2vh;
-    padding: 2vw;
-    bottom: auto;
-    left: auto;
+    padding: 4vw;
     z-index: auto;
   }
-  .bottom-right-section {
-    display: none;
-  }
+
   .brand-logo {
     height: 7vh;
     width: auto;
-    max-width: 150px;
+    max-width: 180px;
   }
+
   .telegram-subscribe {
     align-items: center;
     text-align: center;
   }
-  .telegram-subscribe input,
-  .telegram-subscribe button {
-    width: 100%;
-    max-width: 80vw;
-    font-size: 2.5vw;
+
+  .telegram-subscribe input {
+    width: 50vw;
+    max-width: 300px;
+    font-size: 1.5vw;
   }
+
   .telegram-subscribe button {
-    width: 100%;
-    max-width: 80vw;
+    width: 20vw;
+    max-width: 120px;
+    font-size: 1.5vw;
     margin-top: 1vh;
   }
+
   .slogan {
-    font-size: 2vw;
+    font-size: 1.5vw;
     text-align: center;
-    max-width: 90vw;
+    max-width: 80vw;
     margin: 2vh auto;
   }
+
   .contact {
-    font-size: 2vw;
+    font-size: 1.5vw;
     text-align: center;
-    max-width: 90vw;
+    max-width: 80vw;
   }
+
   .contact h2 {
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
+
   .contact-item {
     justify-content: center;
   }
+
   .contact-icon {
-    width: 3vw;
-    height: 3vw;
+    width: 2vw;
+    height: 2vw;
   }
 
   .social-icons {
     position: static;
     flex-direction: row;
     justify-content: center;
-    gap: 2vw;
+    gap: 3vw;
     margin: 2vh 0;
     transform: none;
   }
+
+  .social-icons svg {
+    width: 3vw;
+    height: 3vw;
+  }
+}
+
+/* Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+  .main-row {
+    padding: 5vw;
+  }
+
+  .avatar-col {
+    display: none;
+  }
+
+  .intro {
+    font-size: 5vw;
+  }
+
+  .info {
+    font-size: 3vw;
+  }
+
+  .action-btn {
+    width: 100%;
+    margin: 2vh 0;
+    font-size: 3vw;
+  }
+
+  .brand-logo {
+    height: 6vh;
+    max-width: 150px;
+  }
+
+  .telegram-subscribe input {
+    width: 80vw;
+    max-width: 90%;
+    font-size: 3.5vw;
+  }
+
+  .telegram-subscribe button {
+    width: 30vw;
+    max-width: 100px;
+    font-size: 3.5vw;
+  }
+
+  .slogan {
+    font-size: 2.5vw;
+    max-width: 90vw;
+  }
+
+  .contact {
+    font-size: 2.5vw;
+    max-width: 90vw;
+  }
+
+  .contact h2 {
+    font-size: 3vw;
+  }
+
+  .contact-icon {
+    width: 4vw;
+    height: 4vw;
+  }
+
   .social-icons svg {
     width: 5vw;
     height: 5vw;
   }
 }
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 575px) {
+
+/* Extra small devices (max-width: 576px) */
+@media (max-width: 576px) {
   .intro {
-    font-size: 5vw;
+    font-size: 6vw;
   }
+
   .info {
+    font-size: 3.5vw;
+  }
+
+  .action-btn {
+    font-size: 3.5vw;
+  }
+
+  .slogan {
     font-size: 3vw;
   }
-  .slogan {
-    font-size: 2.5vw;
-  }
+
   .contact {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
+
+  .contact h2 {
+    font-size: 3.5vw;
+  }
+
   .telegram-subscribe input,
   .telegram-subscribe button {
-    font-size: 3vw;
+    font-size: 4vw;
+  }
+
+  .social-icons svg {
+    width: 6vw;
+    height: 6vw;
   }
 }
-/* For same width (around 1280px) but smaller height: allow scrolling by using min-height */
+
+/* For same width (around 1280px) but smaller height: allow scrolling */
 @media (min-width: 1280px) and (max-height: 1023px) {
   .border-wrapper {
-    min-height: auto; /* Let it expand naturally */
-    height: auto; /* Allow height to grow beyond viewport */
+    min-height: auto;
+    height: auto;
   }
 }
 </style>
