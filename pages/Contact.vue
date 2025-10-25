@@ -5,18 +5,17 @@
         <h2>Get in touch 💌</h2>
 
         <p class="text-left">
-          If you have any question or just want to say hi, i'll try my best to
+          If you have any question or just want to say hi, I'll try my best to
           get back to you.
         </p>
 
         <b-alert show variant="success" v-if="showAlert">
           <strong>All done 🎉</strong><br />
-          Thanks for reaching out {{ this.formData.name }}, I'll reply as soon
-          as i can.
+          Thanks for reaching out {{ formData.name }}, I'll reply as soon as I can.
         </b-alert>
 
-        <b-form class="mb-5" @submit.prevent="sendMessage">
-          <b-form-group id="input-group-1" label="Your Name:">
+        <b-form class="mb-5" @submit.prevent="sendEmail">
+          <b-form-group label="Your Name:">
             <b-form-input
               placeholder="John Doe"
               v-model="formData.name"
@@ -24,7 +23,7 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-2" label="Your Email:">
+          <b-form-group label="Your Email:">
             <b-form-input
               v-model="formData.email"
               type="email"
@@ -33,26 +32,32 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-3" label="Your Message">
+          <b-form-group label="Your Message:">
             <b-form-textarea
               v-model="formData.message"
               no-resize
               rows="3"
-              placeholder="Watsup Elijah, are you available for.."
+              placeholder="Hey Murad, are you available for..."
               required
             ></b-form-textarea>
           </b-form-group>
 
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button type="submit" variant="primary" :disabled="loading">
+            {{ loading ? "Sending..." : "Submit" }}
+          </b-button>
         </b-form>
       </b-col>
     </b-row>
   </b-container>
 </template>
+
 <script>
+import emailjs from "emailjs-com";
+
 export default {
   data() {
     return {
+      loading: false,
       showAlert: false,
       formData: {
         name: "",
@@ -62,49 +67,50 @@ export default {
     };
   },
   methods: {
-    async sendMessage(e) {
-      const self = this;
-      var data = new FormData();
+    async sendEmail() {
+      this.loading = true;
 
-      data.append("Name", self.formData.name);
-      data.append("Email", self.formData.email);
-      data.append("Message", self.formData.message);
+      // 🔧 Replace these values with your real EmailJS credentials
+      const serviceID = "service_e44e1yo"; // Example: service_1a2b3c
+      const templateID = "template_qvosflb"; // Example: template_contact
+      const publicKey = "eY7nmMGT2HwJ9U2y5"; // Example: wLx0sAbCDeFGHIJ
 
-      fetch("https://formspree.io/f/mvodbwva", {
-        method: "POST",
-        body: data,
-        headers: {
-          Accept: "application/json"
-        }
-      }).then(response => {
-        if (response.ok) {
-          this.showAlert = true;
-          form.reset();
-        } else {
-          alert("Sending message failed, please try again");
-        }
-      });
-      // .catch(error => {
-      //   alert("Sending message failed, please try again");
-      // });
+      const templateParams = {
+        from_name: this.formData.name,
+        from_email: this.formData.email,
+        message: this.formData.message,
+        to_name: "Murad Mursela",
+        contact_number: "+251947485789"
+      };
+
+      try {
+        await emailjs.send(serviceID, templateID, templateParams, publicKey);
+        this.showAlert = true;
+        this.formData = { name: "", email: "", message: "" };
+      } catch (error) {
+        alert("❌ Sending failed, please try again later.");
+        console.error("EmailJS Error:", error);
+      } finally {
+        this.loading = false;
+      }
     }
   },
   head: {
-    title: "Contact 📧 - Asaolu Elijah",
+    title: "Contact 📧 - Murad Mursela",
     meta: [
       {
         hid: "description",
         name: "description",
-        content: "Do you have any enquires? Send a message now to Asaolu Elijah"
+        content: "Do you have any enquiries? Send a message now to Murad Mursela"
       },
       {
         hid: "og:title",
         name: "og:title",
-        content: "Contact 📧 - Asaolu Elijah"
+        content: "Contact 📧 - Murad Mursela"
       },
       {
         property: "og:description",
-        content: "Do you have any enquires? Send a message now to Asaolu Elijah"
+        content: "Do you have any enquiries? Send a message now to Murad Mursela"
       },
       {
         hid: "og:image",
@@ -115,6 +121,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .container {
   margin-top: 120px;
