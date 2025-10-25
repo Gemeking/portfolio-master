@@ -5,15 +5,17 @@
         <h2>Get in touch 💌</h2>
 
         <p class="text-left">
-          If you have any question or just want to say hi, I'll try my best to
+          If you have any questions or just want to say hi, I'll try my best to
           get back to you.
         </p>
 
+        <!-- ✅ Success alert -->
         <b-alert show variant="success" v-if="showAlert">
           <strong>All done 🎉</strong><br />
-          Thanks for reaching out {{ formData.name }}, I'll reply as soon as I can.
+          Thanks for reaching out {{ lastSentName }}, I'll reply as soon as I can.
         </b-alert>
 
+        <!-- ✅ Contact Form -->
         <b-form class="mb-5" @submit.prevent="sendEmail">
           <b-form-group label="Your Name:">
             <b-form-input
@@ -59,6 +61,7 @@ export default {
     return {
       loading: false,
       showAlert: false,
+      lastSentName: "",
       formData: {
         name: "",
         email: "",
@@ -70,21 +73,34 @@ export default {
     async sendEmail() {
       this.loading = true;
 
-      // 🔧 Replace these values with your real EmailJS credentials
-      const serviceID = "service_e44e1yo"; // Example: service_1a2b3c
-      const templateID = "template_qvosflb"; // Example: template_contact
-      const publicKey = "eY7nmMGT2HwJ9U2y5"; // Example: wLx0sAbCDeFGHIJ
+      // ✅ Replace these with your actual EmailJS credentials
+      const serviceID = "service_e44e1yo"; // Your EmailJS service ID
+      const templateID = "template_qvosflb"; // Your EmailJS template ID
+      const publicKey = "eY7nmMGT2HwJ9U2y5"; // Your EmailJS public key
+
+      const currentTime = new Date().toLocaleString();
+
+      // ✅ Format message to include name, email, and time
+      const formattedMessage = `
+Name: ${this.formData.name}
+Email: ${this.formData.email}
+Time: ${currentTime}
+
+Message:
+${this.formData.message}
+      `;
 
       const templateParams = {
-        from_name: this.formData.name,
+        from_name: this.formData.name || "Anonymous",
         from_email: this.formData.email,
-        message: this.formData.message,
-        to_name: "Murad Mursela",
-        contact_number: "+251947485789"
+        message: formattedMessage,
+        time: currentTime,
+        to_name: "Murad Mursela"
       };
 
       try {
         await emailjs.send(serviceID, templateID, templateParams, publicKey);
+        this.lastSentName = this.formData.name;
         this.showAlert = true;
         this.formData = { name: "", email: "", message: "" };
       } catch (error) {
@@ -101,7 +117,8 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "Do you have any enquiries? Send a message now to Murad Mursela"
+        content:
+          "Do you have any enquiries? Send a message now to Murad Mursela."
       },
       {
         hid: "og:title",
@@ -110,7 +127,8 @@ export default {
       },
       {
         property: "og:description",
-        content: "Do you have any enquiries? Send a message now to Murad Mursela"
+        content:
+          "Do you have any enquiries? Send a message now to Murad Mursela."
       },
       {
         hid: "og:image",
