@@ -1,20 +1,25 @@
 <template>
-  <div class="container animate__animated animate__fadeIn">
+  <div class="cv-wrapper container animate__animated animate__fadeIn">
     <div class="row">
-      <div class="col-md-6">
+      <!-- LEFT: CV CONTENT -->
+      <div class="col-lg-6 col-md-12">
         <div class="cv-content">
-          <h1 class="line-after">My Credentials</h1>
-          <h4 class="mt-4">Explore My Qualifications 👋</h4>
-          <p>
-            Below is a collection of my professional credentials, certifications, and experiences as an architect and graphic designer. Each document is available for download to showcase my expertise and achievements.
+          <h1 class="cv-title">My Credentials</h1>
+          <h4 class="cv-subtitle">Explore My Professional Achievements 👋</h4>
+          <p class="cv-intro">
+            Discover my professional credentials, certifications, and experiences as an architect and graphic designer. Each document can be downloaded to showcase my skills and achievements.
           </p>
-          <h4 class="mt-5">Documents & Certifications</h4>
-          <p>Click on any item below to download the respective PDF document:</p>
-          <div class="credential-list animate__animated animate__fadeInUp">
-            <div v-for="(credential, index) in credentials" :key="index" class="credential-item">
+
+          <h4 class="cv-doc-title mt-5">Documents & Certifications</h4>
+          <p>Click on any item below to download the PDF:</p>
+
+          <div class="credential-list">
+            <div v-for="(credential, index) in credentials" :key="index" class="credential-card">
               <a :href="credential.path" :download="credential.name" class="credential-link">
-                <i :class="credential.icon" class="credential-icon"></i>
-                <div class="credential-details">
+                <div class="icon-box">
+                  <i :class="credential.icon"></i>
+                </div>
+                <div class="details-box">
                   <h5>{{ credential.name }}</h5>
                   <p>{{ credential.description }}</p>
                 </div>
@@ -23,12 +28,10 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <img
-          src="@/assets/c.jpg"
-          alt="Credentials Illustration"
-          class="cv-img"
-        />
+
+      <!-- RIGHT: IMAGE -->
+      <div class="col-lg-6 col-md-12 text-center">
+        <img src="@/assets/c.jpg" alt="Credentials Illustration" class="cv-image" />
       </div>
     </div>
   </div>
@@ -41,37 +44,37 @@ export default {
       credentials: [
         {
           name: "BSc Degree in Architecture",
-          path: "/static/pdfs/BSC Degree of Architecture.pdf",
+          path: "/pdfs/BSCDegreeofArchitecture.pdf",
           description: "Official degree certificate from Wachemo University, Ethiopia.",
           icon: "fas fa-graduation-cap"
         },
         {
           name: "Work Experience Letter",
-          path: "/static/pdfs/work-experience.pdf",
-          description: "Documentation of my professional experience in architecture and design.",
+          path: "/pdfs/IMG_9198.JPG",
+          description: "Professional experience in architecture and design.",
           icon: "fas fa-briefcase"
         },
         {
           name: "Exhibition Certificate",
-          path: "/static/pdfs/exhibition.pdf",
-          description: "Certificate for participation in architectural and design exhibitions.",
+          path: "/pdfs/exhibition.pdf",
+          description: "Participation certificate in architecture & design exhibitions.",
           icon: "fas fa-palette"
         },
         {
           name: "Netherlands Certificate",
-          path: "/static/pdfs/Netherland Certificate (2).pdf",
+          path: "/pdfs/NetherlandCertificate.pdf",
           description: "Certification earned from a program in the Netherlands.",
           icon: "fas fa-certificate"
         },
         {
           name: "Recommendation Letter",
-          path: "/static/pdfs/Recommendation 1.pdf",
-          description: "Professional recommendation highlighting my skills and work ethic.",
+          path: "/pdfs/Recommendation 1.pdf",
+          description: "Professional recommendation highlighting my skills.",
           icon: "fas fa-file-alt"
         },
         {
           name: "Dereja Certificate",
-          path: "/static/pdfs/Dereja.pdf",
+          path: "/pdfs/Dereja.pdf",
           description: "Certificate from the Dereja program for professional development.",
           icon: "fas fa-award"
         }
@@ -84,16 +87,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content:
-          "Explore the professional credentials of Murad Mursela, an architect and graphic designer from Ethiopia. Download my BSc Degree, certifications, and recommendation letters."
-      }
-    ],
-    link: [
-      {
-        rel: "stylesheet",
-        href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
-        integrity: "sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==",
-        crossorigin: "anonymous"
+        content: "Explore Murad Mursela's professional credentials and certifications. Download BSc Degree, recommendation letters, and certificates."
       }
     ]
   }
@@ -101,95 +95,126 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin-top: 140px;
-  text-align: left;
-  padding: 0 15px;
+.cv-wrapper {
+  margin-top: 120px;
+  margin-bottom: 60px;
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
 }
 
-.line-after {
-  overflow: hidden;
-  color: #333;
+/* --- TITLES --- */
+.cv-title {
+  font-size: 2.8rem;
   font-weight: 700;
-}
-
-.line-after::after {
-  content: "";
+  color: var(--primary-color);
+  position: relative;
   display: inline-block;
-  height: 0.5em;
-  vertical-align: bottom;
-  width: 100%;
-  margin-right: -100%;
-  margin-left: 10px;
-  border-top: 2px solid rgb(211, 46, 46);
+  margin-bottom: 0.8rem;
+}
+.cv-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ff4e50, #f9d423);
 }
 
-.cv-content h4 {
-  color: #444;
-  font-weight: 600;
+.cv-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
 }
 
-.cv-content p {
-  color: #666;
-  line-height: 1.6;
+.cv-intro {
+  line-height: 1.8;
+  color: var(--text-muted);
 }
 
+/* --- CREDENTIAL CARDS --- */
 .credential-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
   margin-top: 20px;
 }
 
-.credential-item {
-  margin-bottom: 15px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.credential-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
-
-.credential-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.credential-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(211, 46, 46, 0.35);
 }
 
 .credential-link {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding: 15px;
   text-decoration: none;
-  color: #333;
+  color: var(--text-color);
 }
 
-.credential-icon {
-  font-size: 24px;
-  color: rgb(211, 46, 46);
+.icon-box {
+  flex-shrink: 0;
+  width: 55px;
+  height: 55px;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
   margin-right: 15px;
+  transition: transform 0.4s ease;
+}
+.credential-card:hover .icon-box {
+  transform: rotate(15deg) scale(1.1);
 }
 
-.credential-details h5 {
+.details-box h5 {
   margin: 0;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
 }
-
-.credential-details p {
+.details-box p {
   margin: 5px 0 0;
-  font-size: 14px;
-  color: #777;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
-.cv-img {
+/* --- IMAGE --- */
+.cv-image {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.cv-image:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(211,46,46,0.3);
 }
 
-@media (max-width: 768px) {
-  .cv-img {
-    margin-top: 20px;
+/* --- RESPONSIVE --- */
+@media (max-width: 991px) {
+  .cv-wrapper {
+    text-align: center;
   }
-  .credential-item {
-    padding: 10px;
+  .credential-link {
+    flex-direction: column;
+    align-items: center;
+  }
+  .icon-box {
+    margin-bottom: 10px;
   }
 }
 </style>
