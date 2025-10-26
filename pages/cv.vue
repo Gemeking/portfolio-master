@@ -5,7 +5,7 @@
       <div class="col-lg-6 col-md-12">
         <div class="cv-content">
           <h1 class="cv-title">My Credentials</h1>
-          <h4 class="cv-subtitle">Explore My Professional Achievements 👋</h4>
+          <h4 class="cv-subtitle">Explore My Professional Achievements</h4>
           <p class="cv-intro">
             Discover my professional credentials, certifications, and experiences as an architect and graphic designer. Each document can be downloaded to showcase my skills and achievements.
           </p>
@@ -82,7 +82,7 @@ export default {
     };
   },
   head: {
-    title: "CV 📜 - Murad Mursela",
+    title: "CV - Murad Mursela",
     meta: [
       {
         hid: "description",

@@ -2,7 +2,7 @@
   <b-container class="page animate__animated animate__fadeIn">
     <b-row class="justify-content-center">
       <b-col cols="md-6">
-        <h2>Get in touch 💌</h2>
+        <h2>Get in touch</h2>
 
         <p class="text-left">
           If you have any questions or just want to say hi, I'll try my best to
@@ -11,7 +11,7 @@
 
         <!-- ✅ Success alert -->
         <b-alert show variant="success" v-if="showAlert">
-          <strong>All done 🎉</strong><br />
+          <strong>All done</strong><br />
           Thanks for reaching out {{ lastSentName }}, I'll reply as soon as I can.
         </b-alert>
 
@@ -112,7 +112,7 @@ ${this.formData.message}
     }
   },
   head: {
-    title: "Contact 📧 - Murad Mursela",
+    title: "Contact - Murad Mursela",
     meta: [
       {
         hid: "description",
@@ -123,7 +123,7 @@ ${this.formData.message}
       {
         hid: "og:title",
         name: "og:title",
-        content: "Contact 📧 - Murad Mursela"
+        content: "Contact - Murad Mursela"
       },
       {
         property: "og:description",
