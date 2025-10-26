@@ -4,29 +4,13 @@
       <!-- LEFT CONTENT -->
       <div class="col-md-6 about-left">
         <h1 class="title mb-3">About Me</h1>
-        <h2 class="name mb-4">Architect Billionaire <span>Murad</span></h2>
+        <h2 class="name mb-4"><span>Murad</span></h2>
         <p class="intro">
           I'm <b>Murad Mursela</b>, an <b>Architect</b> and <b>Graphic Designer</b>
           from Ethiopia, blending creativity and precision to design impactful
           spaces and visuals. My passion lies in turning ideas into
           architectural masterpieces and unforgettable brands.
         </p>
-
-        <h3 class="section-title mt-4">In Architecture Design</h3>
-        <ul class="custom-list">
-          <li>Floor plan making and rendering</li>
-          <li>3D modeling and rendering</li>
-          <li>Facade design</li>
-          <li>Animation videos</li>
-          <li>Software setup</li>
-          <li>Review drawings</li>
-          <li>Supervise projects</li>
-          <li>Interior design</li>
-          <li>Material selection</li>
-          <li>Material supply & allocation</li>
-          <li>Furniture design</li>
-          <li>Portfolio preparation</li>
-        </ul>
 
         <h3 class="section-title mt-4">Our Services</h3>
         <div class="service-columns">
@@ -54,6 +38,18 @@
               <li>Project Supervision</li>
               <li>Interior Design & Material Allocation</li>
               <li>Furniture & Portfolio Design</li>
+              <li>Floor plan making and rendering</li>
+          <li>3D modeling and rendering</li>
+          <li>Facade design</li>
+          <li>Animation videos</li>
+          <li>Software setup</li>
+          <li>Review drawings</li>
+          <li>Supervise projects</li>
+          <li>Interior design</li>
+          <li>Material selection</li>
+          <li>Material supply & allocation</li>
+          <li>Furniture design</li>
+          <li>Portfolio preparation</li>
             </ul>
           </div>
         </div>
