@@ -8,18 +8,10 @@
         </div>
 
         <div class="telegram-subscribe">
-          <p>Subscribe to our <strong>Telegram Channel</strong></p>
-          <div class="telegram-input-box">
-            <input
-              type="text"
-              v-model="telegramInput"
-              placeholder="@yourusername"
-              class="telegram-input"
-            />
-            <button @click="goToTelegram" class="telegram-btn">
-              Join
-            </button>
-          </div>
+          <p>Join our <strong>Telegram Channel</strong></p>
+          <button @click="goToTelegram" class="telegram-btn">
+            Join Now
+          </button>
         </div>
       </div>
 
@@ -35,7 +27,11 @@
       <!-- RIGHT SIDE: CONTACT -->
       <div class="footer-right">
         <h2>Contact</h2>
-        <div class="contact-item" v-for="(phone, index) in phoneNumbers" :key="index">
+        <div
+          class="contact-item"
+          v-for="(phone, index) in phoneNumbers"
+          :key="index"
+        >
           <i class="fas fa-phone-alt contact-icon"></i>
           <a :href="`tel:${phone}`">{{ phone }}</a>
         </div>
@@ -44,7 +40,9 @@
 
     <!-- COPYRIGHT -->
     <div class="footer-bottom">
-      <p>© {{ new Date().getFullYear() }} Mura Creatives — All Rights Reserved.</p>
+      <p>
+        © {{ new Date().getFullYear() }} Mura Creatives — All Rights Reserved.
+      </p>
     </div>
   </footer>
 </template>
@@ -57,7 +55,6 @@ export default {
   name: "FooterSection",
   data() {
     return {
-      telegramInput: "",
       themeMode: "light", // default theme
       phoneNumbers: ["+251947485789", "+251968414867"],
     };
@@ -69,12 +66,7 @@ export default {
   },
   methods: {
     goToTelegram() {
-      const username = this.telegramInput.trim();
-      if (username) {
-        window.open(`https://t.me/${username}`, "_blank");
-      } else {
-        alert("Please enter your Telegram username.");
-      }
+      window.open("https://t.me/MuraCreatives", "_blank");
     },
     applyTheme(mode) {
       this.themeMode = mode;
@@ -156,32 +148,20 @@ export default {
 
 .telegram-subscribe {
   margin-top: 20px;
+  text-align: left;
 }
 .telegram-subscribe p {
   font-size: 0.95rem;
   margin-bottom: 10px;
   color: var(--text-muted);
 }
-.telegram-input-box {
-  display: flex;
-  gap: 8px;
-}
-.telegram-input {
-  flex: 1;
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-size: 0.9rem;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
 .telegram-btn {
   background: linear-gradient(135deg, #ff4e50, #f9d423);
   color: #fff;
   border: none;
   border-radius: 10px;
-  padding: 8px 14px;
+  padding: 10px 18px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -249,8 +229,8 @@ export default {
   .brand-logo-container {
     justify-content: center;
   }
-  .telegram-input-box {
-    flex-direction: column;
+  .telegram-subscribe {
+    text-align: center;
   }
   .telegram-btn {
     width: 100%;
