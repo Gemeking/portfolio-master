@@ -2,7 +2,7 @@
   <div>
     <div class="border-right"></div>
     <div class="border-wrapper" ref="borderWrapper">
-      <div class="border-bottom"></div>
+
       <div class="bg-side"></div>
 
       <b-row class="main-row" no-gutters>
@@ -64,37 +64,7 @@
     </div>
 
     <!-- Bottom-left logo + Telegram subscribe section -->
-    <div class="bottom-left-section">
-      <div class="brand-logo-container">
-        <img :src="logoSrc" alt="Mura Creatives Logo" class="brand-logo" />
-      </div>
-
-      <div class="telegram-subscribe">
-        <p>Subscribe to our Telegram channel</p>
-        <input
-          type="text"
-          v-model="telegramInput"
-          placeholder="Enter your Telegram username"
-        />
-        <button @click="goToTelegram">Join</button>
-      </div>
-      <div class="slogan">
-        <h3>THE DIFFERENCE BETWEEN</h3>
-        <h3>GOOD AND BAD</h3>
-        <h3>ARCHITECTURE IS THE TIME YOU SPEND ON IT</h3>
-      </div>
-      <div class="contact">
-        <h2>Contact</h2>
-        <div class="contact-item">
-          <CallIcon class="contact-icon" />
-          <a href="tel:+251947485789">+251 947 485 789</a>
-        </div>
-        <div class="contact-item">
-          <CallIcon class="contact-icon" />
-          <a href="tel:+251968414867">+251 968 414 867</a>
-        </div>
-      </div>
-    </div>
+     <footer1 />
   </div>
 </template>
 
@@ -608,6 +578,7 @@ body.dark .contact-icon {
 @media (max-width: 768px) {
   .main-row {
     padding: 5vw;
+    margin-top: 100px;
   }
 
   .avatar-col {

@@ -31,7 +31,7 @@
 
       <!-- RIGHT: IMAGE -->
       <div class="col-lg-6 col-md-12 text-center">
-        <img src="@/assets/c.jpg" alt="Credentials Illustration" class="cv-image" />
+        <img src="@/assets/ID.png" alt="Credentials Illustration" class="cv-image" />
       </div>
     </div>
   </div>
@@ -96,8 +96,6 @@ export default {
 
 <style scoped>
 .cv-wrapper {
-  margin-top: 120px;
-  margin-bottom: 60px;
   color: var(--text-color);
   font-family: 'Poppins', sans-serif;
 }
@@ -196,18 +194,26 @@ export default {
   width: 100%;
   max-width: 400px;
   border-radius: 15px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
+
+/* Desktop/Large Screen adjustment */
+@media (min-width: 992px) {
+  .cv-image {
+    margin-top: -150px; /* moves slightly up on large screens only */
+  }
+}
+
 .cv-image:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(211,46,46,0.3);
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 78, 80, 0.3);
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 991px) {
   .cv-wrapper {
     text-align: center;
+    margin-top: 60px;
   }
   .credential-link {
     flex-direction: column;
@@ -216,5 +222,10 @@ export default {
   .icon-box {
     margin-bottom: 10px;
   }
+  .cv-image {
+    margin-top: 30px; /* reset image position for mobile */
+    max-width: 300px;
+  }
 }
 </style>
+
