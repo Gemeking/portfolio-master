@@ -2,7 +2,6 @@
   <div>
     <div class="border-right"></div>
     <div class="border-wrapper" ref="borderWrapper">
-
       <div class="bg-side"></div>
 
       <b-row class="main-row" no-gutters>
@@ -21,14 +20,17 @@
         <!-- Intro Text -->
         <b-col md="8" class="intro-section">
           <div class="text-content">
-            <div class="flex flex-col items-center justify-center animate__animated animate__fadeInUp animate__fast mt-12">
-  <h3 class="text-2xl md:text-4xl font-semibold text-center">
-    ARCHITECT | DESIGNER | INNOVATOR
-  </h3>
-  <h4 class="text-xl md:text-2xl font-medium text-center mt-2">
-    MURAD MURSELA
-  </h4>
-</div>
+            <div
+              class="flex flex-col items-center justify-center animate__animated animate__fadeInUp animate__fast mt-12"
+            >
+              <h3 class="text-2xl md:text-4xl font-semibold text-center">
+                ARCHITECT | DESIGNER | INNOVATOR
+              </h3>
+              <h4 class="text-xl md:text-2xl font-medium text-center mt-2">
+                MURAD MURSELA
+              </h4>
+            </div>
+
             <div class="info">
               An <b>architect</b> and <b>graphic designer</b>, passionate about
               creating beautiful and functional designs.<br />
@@ -50,13 +52,17 @@
       </b-row>
 
       <!-- Social Icons -->
-      <div class="social-icons animate__animated animate__fadeInUp animate__delay-1s">
-        <social-link :to="socialLinks.github"><GithubIcon /></social-link>
-        <social-link :to="socialLinks.linkedin"><LinkedinIcon /></social-link>
-        <social-link :to="socialLinks.twitter"><TwitterIcon /></social-link>
-        <social-link :to="socialLinks.facebook"><FacebookIcon /></social-link>
-        <social-link :to="socialLinks.mail"><MailIcon /></social-link>
-        <social-link :to="socialLinks.youtube" v-if="socialLinks.youtube"><YoutubeIcon /></social-link>
+      <div
+        class="social-icons animate__animated animate__fadeInUp animate__delay-1s"
+      >
+        <social-link :to="socialLinks.instagram"><InstagramIcon /></social-link>
+        <social-link :to="socialLinks.telegram"><PaperPlaneIcon /></social-link>
+        <a :href="`mailto:${socialLinks.mail}`">
+          <MailIcon />
+        </a>
+        <social-link :to="socialLinks.youtube" v-if="socialLinks.youtube"
+          ><YoutubeIcon
+        /></social-link>
       </div>
 
       <!-- Background right overlay -->
@@ -64,17 +70,15 @@
     </div>
 
     <!-- Bottom-left logo + Telegram subscribe section -->
-     <footer1 />
+    <footer1 />
   </div>
 </template>
 
 <script>
-import GithubIcon from "vue-ionicons/dist/logo-github.vue";
-import LinkedinIcon from "vue-ionicons/dist/logo-linkedin.vue";
-import TwitterIcon from "vue-ionicons/dist/logo-twitter.vue";
-import FacebookIcon from "vue-ionicons/dist/logo-facebook.vue";
 import YoutubeIcon from "vue-ionicons/dist/logo-youtube.vue";
 import MailIcon from "vue-ionicons/dist/md-mail.vue";
+import InstagramIcon from "vue-ionicons/dist/logo-instagram.vue";
+import PaperPlaneIcon from "vue-ionicons/dist/md-paper-plane.vue"; // Telegram icon
 import CallIcon from "vue-ionicons/dist/md-call.vue";
 
 import logoWhite from "@/assets/mura-creatives-logo-white.png";
@@ -82,12 +86,10 @@ import logoBlack from "@/assets/mura-creatives-logo-black.png";
 
 export default {
   components: {
-    GithubIcon,
-    LinkedinIcon,
-    TwitterIcon,
-    FacebookIcon,
     YoutubeIcon,
     MailIcon,
+    InstagramIcon,
+    PaperPlaneIcon,
     CallIcon,
   },
   data() {
@@ -96,11 +98,10 @@ export default {
       themeMode: "light",
       telegramInput: "",
       socialLinks: {
-        github: "https://github.com/muradmursela",
-        linkedin: "https://www.linkedin.com/in/muradmursela/",
-        twitter: "https://twitter.com/muradmursela",
-        facebook: "https://facebook.com/muradmursela",
-        mail: "mailto:murad@example.com",
+        instagram:
+          "https://www.instagram.com/mura_abdo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        telegram: "https://t.me/MuraCreatives",
+        mail: "muradmursela@gmail.com",
         youtube: "",
       },
     };
@@ -115,7 +116,7 @@ export default {
       this.avatar = require("@/assets/mi.png");
     },
     goToTelegram() {
-      window.open("https://t.me/MuraCreatives", "_blank");
+      window.open(this.socialLinks.telegram, "_blank");
     },
   },
   mounted() {
@@ -136,6 +137,7 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
+/* The same CSS as your original — unchanged */
 .bottom-left-section {
   position: fixed;
   bottom: 2vh;
@@ -144,11 +146,10 @@ export default {
   align-items: flex-start;
   gap: 1.5vw;
   z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.3); /* semi-transparent black */
-  padding: 0.5rem 1rem; /* optional, for spacing around content */
-  border-radius: 5px; /* optional, for rounded corners */
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
 }
-
 
 /* Logo */
 .brand-logo {
