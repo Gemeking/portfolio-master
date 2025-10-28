@@ -100,7 +100,7 @@ export default {
       socialLinks: {
         instagram:
           "https://www.instagram.com/mura_abdo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        telegram: "https://t.me/MuraCreatives",
+        telegram: "https://t.me/Murilo81",
         mail: "muradmursela@gmail.com",
         youtube: "",
       },

@@ -194,6 +194,7 @@ export default {
   font-size: 1.4rem;
 }
 .contact-item {
+  margin-left: 100px;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
