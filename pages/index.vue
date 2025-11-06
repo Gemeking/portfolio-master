@@ -132,9 +132,9 @@ export default {
 /* Circular background behind image */
 .bg-circle {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: rgba(53, 136, 219, 0.2); /* light accent circle */
+  width: 700px;
+  height: 700px;
+  background: #0f2850; /* light accent circle */
   border-radius: 50%;
   z-index: 0;
   top: 50%;
