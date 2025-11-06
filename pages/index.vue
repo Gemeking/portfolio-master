@@ -1,6 +1,7 @@
 <template>
   <div :class="themeMode" class="home-page">
     <!-- Full-page background image -->
+    
     <div class="background-image">
       <b-img :src="avatar" alt="Murad Mursela" class="bg-img" />
       <div class="overlay"></div>
@@ -123,14 +124,13 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  overflow: hidden;
+  z-index: 1;
+
 }
 .bg-img {
-  width: 100%;
+  width: 50%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.3);
 }
 .overlay {
   position: absolute;
@@ -152,7 +152,7 @@ export default {
 }
 .main-row { width: 100%; text-align: center; }
 
-/* TEXT COLUMN */
+
 .text-col { text-align: left; padding-left: 4rem; }
 .intro-text { font-size: 2.8rem; font-weight: 700; margin-bottom: 0; }
 .name-text { font-size: 4.2rem; font-weight: 900; margin-top: 0; line-height: 1; color: var(--accent-color); }
@@ -160,7 +160,7 @@ export default {
 .title-text { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
 .bio-text { font-size: 1rem; line-height: 1.7; max-width: 300px; }
 
-/* PHOTO CIRCLE */
+
 .photo-col { display: flex; justify-content: center; }
 .photo-circle {
   background-color: var(--bg-color);
