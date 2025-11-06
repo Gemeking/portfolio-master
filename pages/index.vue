@@ -2,6 +2,8 @@
   <div :class="themeMode" class="home-page">
     <!-- Full-page background image -->
     <div class="background-image">
+      <!-- Circular background -->
+      <div class="bg-circle"></div>
       <b-img :src="avatar" alt="Murad Mursela" class="bg-img" />
       <div class="overlay"></div>
     </div>
@@ -38,18 +40,17 @@
       <!-- Bottom section / Footer -->
       <div class="bottom-section">
         <div class="join-telegram">Connect With Me</div>
-          <div class="social-pills">
-  <a :href="socialLinks.telegram" target="_blank" class="pill">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
-  </a>
-  <a :href="socialLinks.instagram" target="_blank" class="pill">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
-  </a>
-  <a :href="`mailto:${socialLinks.mail}`" class="pill">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
-  </a>
-</div>
-
+        <div class="social-pills">
+          <a :href="socialLinks.telegram" target="_blank" class="pill">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+          </a>
+          <a :href="socialLinks.instagram" target="_blank" class="pill">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+          </a>
+          <a :href="`mailto:${socialLinks.mail}`" class="pill">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
+          </a>
+        </div>
         <p class="footer-text">© {{ new Date().getFullYear() }} Murad Mursela. All Rights Reserved.</p>
       </div>
     </div>
@@ -123,18 +124,41 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Circular background behind image */
+.bg-circle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(53, 136, 219, 0.2); /* light accent circle */
+  border-radius: 50%;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+/* Main background image */
 .bg-img {
   margin-top: 83px;
   width: 40%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
 }
+
 .overlay {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.3);
+  z-index: 2;
 }
 
 /* Main content wrapper */
