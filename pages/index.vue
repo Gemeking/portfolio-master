@@ -27,7 +27,7 @@
 
           <!-- Center: Photo circle -->
           <b-col md="6" class="photo-col">
-           
+        
           </b-col>
 
           <!-- Right: Quote -->
@@ -102,11 +102,19 @@ export default {
   --bg-color: #ffffff;
   --text-color: #111111;
   --accent-color: #001f3f;
+  --circle-bg: #e6f0ff;
+  --overlay-rgba: rgba(255, 255, 255, 0.2);
+  --bottom-bg: rgba(255, 255, 255, 0.5);
+  --img-brightness: 1.2;
 }
 .dark {
   --bg-color: #001f3f;
   --text-color: #ffffff;
   --accent-color: #ff9f43;
+  --circle-bg: #0f2850;
+  --overlay-rgba: rgba(0, 0, 0, 0.3);
+  --bottom-bg: rgba(0, 0, 0, 0.5);
+  --img-brightness: 0.8;
 }
 
 /* Page wrapper */
@@ -134,13 +142,12 @@ export default {
   position: absolute;
   width: 700px;
   height: 700px;
-  background: #0f2850; /* light accent circle */
+  background: var(--circle-bg);
   border-radius: 50%;
   z-index: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 /* Main background image */
@@ -151,13 +158,14 @@ export default {
   object-fit: cover;
   position: relative;
   z-index: 1;
+  filter: brightness(var(--img-brightness));
 }
 
 .overlay {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: var(--overlay-rgba);
   z-index: 2;
 }
 
@@ -198,7 +206,7 @@ export default {
 
 /* Quote */
 .quote-col { text-align: right; padding-right: 4rem; }
-.quote-text { font-size: 1.3rem; font-style: italic; opacity: 0.9; color: #fff; }
+.quote-text { font-size: 1.3rem; font-style: italic; opacity: 0.9; color: var(--text-color); }
 
 /* Bottom Section / Footer */
 .bottom-section {
@@ -207,7 +215,7 @@ export default {
   align-items: center;
   text-align: center;
   padding: 2rem 1rem;
-  background: rgba(0,0,0,0.5);
+  background: var(--bottom-bg);
   border-radius: 20px;
   margin: 2rem auto;
   width: fit-content;
@@ -247,13 +255,11 @@ export default {
 
 /* Responsive */
 @media (max-width: 991px) {
-  .bg-img {display: none;}
   .main-row { flex-direction: column; }
   .text-col, .quote-col { text-align: center; padding: 0 2rem; }
   .photo-circle { width: 300px; height: 300px; margin: 2rem 0; }
 }
 @media (max-width: 480px) {
-  .bg-img {display: none;}
   .intro-text { font-size: 2rem; }
   .name-text { font-size: 2.8rem; }
   .photo-circle { width: 250px; height: 250px; }
