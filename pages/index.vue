@@ -247,11 +247,13 @@ export default {
 
 /* Responsive */
 @media (max-width: 991px) {
+  .bg-img {display: none;}
   .main-row { flex-direction: column; }
   .text-col, .quote-col { text-align: center; padding: 0 2rem; }
   .photo-circle { width: 300px; height: 300px; margin: 2rem 0; }
 }
 @media (max-width: 480px) {
+  .bg-img {display: none;}
   .intro-text { font-size: 2rem; }
   .name-text { font-size: 2.8rem; }
   .photo-circle { width: 250px; height: 250px; }
