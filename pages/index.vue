@@ -1,7 +1,6 @@
 <template>
   <div :class="themeMode" class="home-page">
     <!-- Full-page background image -->
-    
     <div class="background-image">
       <b-img :src="avatar" alt="Murad Mursela" class="bg-img" />
       <div class="overlay"></div>
@@ -26,7 +25,7 @@
 
           <!-- Center: Photo circle -->
           <b-col md="6" class="photo-col">
-
+          
           </b-col>
 
           <!-- Right: Quote -->
@@ -41,13 +40,13 @@
         <div class="join-telegram">Connect With Me</div>
         <div class="social-pills">
           <a :href="socialLinks.telegram" target="_blank" class="pill telegram">
-            <i class="bi bi-telegram"></i>
+            <i class="fab fa-telegram-plane"></i>
           </a>
           <a :href="socialLinks.instagram" target="_blank" class="pill instagram">
-            <i class="bi bi-instagram"></i>
+            <i class="fab fa-instagram"></i>
           </a>
           <a :href="`mailto:${socialLinks.mail}`" class="pill email">
-            <i class="bi bi-envelope-fill"></i>
+            <i class="fas fa-envelope"></i>
           </a>
         </div>
         <p class="footer-text">© {{ new Date().getFullYear() }} Murad Mursela. All Rights Reserved.</p>
@@ -95,8 +94,8 @@ export default {
 <style scoped>
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
-/* Bootstrap Icons */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+/* Font Awesome CDN */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
 
 /* THEME VARIABLES */
 .light {
@@ -125,10 +124,10 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
-
 }
 .bg-img {
-  width: 50%;
+  margin-top: 83px;
+  width: 40%;
   height: 100%;
   object-fit: cover;
 }
@@ -152,7 +151,6 @@ export default {
 }
 .main-row { width: 100%; text-align: center; }
 
-
 .text-col { text-align: left; padding-left: 4rem; }
 .intro-text { font-size: 2.8rem; font-weight: 700; margin-bottom: 0; }
 .name-text { font-size: 4.2rem; font-weight: 900; margin-top: 0; line-height: 1; color: var(--accent-color); }
@@ -160,7 +158,7 @@ export default {
 .title-text { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
 .bio-text { font-size: 1rem; line-height: 1.7; max-width: 300px; }
 
-
+/* Photo circle */
 .photo-col { display: flex; justify-content: center; }
 .photo-circle {
   background-color: var(--bg-color);
@@ -175,11 +173,11 @@ export default {
 }
 .photo-img { width: 90%; height: 90%; object-fit: cover; border-radius: 50%; }
 
-/* QUOTE */
+/* Quote */
 .quote-col { text-align: right; padding-right: 4rem; }
 .quote-text { font-size: 1.3rem; font-style: italic; opacity: 0.9; color: #fff; }
 
-/* BOTTOM SECTION / FOOTER */
+/* Bottom Section / Footer */
 .bottom-section {
   display: flex;
   flex-direction: column;
@@ -211,7 +209,7 @@ export default {
 .pill:hover { transform: scale(1.2); filter: brightness(1.2); }
 .footer-text { font-size: 0.85rem; color: #ccc; margin-top: 0.5rem; }
 
-/* RESPONSIVE */
+/* Responsive */
 @media (max-width: 991px) {
   .main-row { flex-direction: column; }
   .text-col, .quote-col { text-align: center; padding: 0 2rem; }
