@@ -25,7 +25,7 @@
 
           <!-- Center: Photo circle -->
           <b-col md="6" class="photo-col">
-          
+           
           </b-col>
 
           <!-- Right: Quote -->
@@ -38,17 +38,18 @@
       <!-- Bottom section / Footer -->
       <div class="bottom-section">
         <div class="join-telegram">Connect With Me</div>
-        <div class="social-pills">
-          <a :href="socialLinks.telegram" target="_blank" class="pill telegram">
-            <i class="fab fa-telegram-plane"></i>
-          </a>
-          <a :href="socialLinks.instagram" target="_blank" class="pill instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a :href="`mailto:${socialLinks.mail}`" class="pill email">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
+          <div class="social-pills">
+  <a :href="socialLinks.telegram" target="_blank" class="pill">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+  </a>
+  <a :href="socialLinks.instagram" target="_blank" class="pill">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+  </a>
+  <a :href="`mailto:${socialLinks.mail}`" class="pill">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
+  </a>
+</div>
+
         <p class="footer-text">© {{ new Date().getFullYear() }} Murad Mursela. All Rights Reserved.</p>
       </div>
     </div>
@@ -94,8 +95,6 @@ export default {
 <style scoped>
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
-/* Font Awesome CDN */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
 
 /* THEME VARIABLES */
 .light {
@@ -191,7 +190,14 @@ export default {
   backdrop-filter: blur(8px);
 }
 .join-telegram { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent-color); }
-.social-pills { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+
+/* Social icons as images */
+.social-pills {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
 .pill {
   display: flex;
   align-items: center;
@@ -199,14 +205,20 @@ export default {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  overflow: hidden;
   transition: all 0.3s ease;
-  color: #fff;
+  background: var(--accent-color);
 }
-.pill.telegram { background: #26a5e4; }
-.pill.instagram { background: #e1306c; }
-.pill.email { background: #555555; }
-.pill:hover { transform: scale(1.2); filter: brightness(1.2); }
+.pill img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+.pill:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
 .footer-text { font-size: 0.85rem; color: #ccc; margin-top: 0.5rem; }
 
 /* Responsive */
