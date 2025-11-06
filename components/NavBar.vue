@@ -41,7 +41,7 @@
           <b-nav-item to="/about">About</b-nav-item>
 
           <!-- Projects Dropdown -->
-          <b-nav-item-dropdown text="Projects" right>
+          <b-nav-item-dropdown text="Projects" right class="projects-dropdown">
             <b-dropdown-item to="/projects/furniture">Furniture Design</b-dropdown-item>
             <b-dropdown-item to="/projects/graphics">Graphics Design</b-dropdown-item>
             <b-dropdown-item to="/projects/architectural">Architectural</b-dropdown-item>
@@ -95,19 +95,30 @@ export default {
 </script>
 
 <style scoped>
+/* Right border decoration */
 .border-right {
   position: fixed;
   height: 667px;
   width: 80px;
-  background-size: 100% auto;
-  right: 0px; 
+  right: 0;
   z-index: 1000;
 }
 
-/* Navbar Custom Height */
+/* Navbar Custom Height & Transparent Background */
 .custom-navbar {
   height: 80px;
   padding: 0 2rem;
+  background-color: transparent !important;
+  transition: background 0.3s ease;
+  z-index: 2000;
+}
+
+/* Navbar background on mobile / collapsed menu */
+@media (max-width: 991px) {
+  .custom-navbar {
+    background-color: rgba(0,0,0,0.7) !important;
+    backdrop-filter: blur(10px);
+  }
 }
 
 /* Nav Styling */
@@ -169,6 +180,27 @@ body.dark .main-nav .nav-item + .nav-item {
 @media (max-width: 991px) {
   .main-nav {
     transform: none;
+  }
+}
+
+/* Projects Dropdown Background (desktop only) */
+.projects-dropdown .dropdown-menu {
+  background-color: #001f3f; /* solid color */
+  border-radius: 5px;
+}
+.projects-dropdown .dropdown-item {
+  color: #fff !important;
+}
+.projects-dropdown .dropdown-item:hover {
+  background-color: #ff9f43 !important;
+  color: #fff !important;
+}
+
+/* Ensure mobile dropdown still readable */
+@media (max-width: 991px) {
+  .projects-dropdown .dropdown-menu {
+    background-color: rgba(0,0,0,0.8) !important;
+    backdrop-filter: blur(10px);
   }
 }
 </style>

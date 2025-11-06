@@ -1,689 +1,225 @@
 <template>
-  <div>
-    <div class="border-right"></div>
-    <div class="border-wrapper" ref="borderWrapper">
-      <div class="bg-side"></div>
-
-      <b-row class="main-row" no-gutters>
-        <!-- Avatar Left -->
-        <b-col md="4" class="relative group avatar-col">
-          <b-img
-            :src="avatar"
-            id="avatar-img"
-            alt="Murad Mursela Portrait"
-            @mouseenter="changeAvatar"
-            @mouseleave="changeAvatar"
-            class="rounded-full shadow-2xl p-4 transition-transform duration-500 group-hover:scale-105"
-          />
-        </b-col>
-
-        <!-- Intro Text -->
-        <b-col md="8" class="intro-section">
-          <div class="text-content">
-            <div
-              class="flex flex-col items-center justify-center animate__animated animate__fadeInUp animate__fast mt-12"
-            >
-              <h3 class="text-2xl md:text-4xl font-semibold text-center">
-                ARCHITECT | DESIGNER | INNOVATOR
-              </h3>
-              <h4 class="text-xl md:text-2xl font-medium text-center mt-2">
-                MURAD MURSELA
-              </h4>
-            </div>
-
-            <div class="info">
-              An <b>architect</b> and <b>graphic designer</b>, passionate about
-              creating beautiful and functional designs.<br />
-              I specialise in designing <b>logos</b>, <b>brochures</b>, and
-              other visual identity materials for brands and projects.
-              <br />
-              <b-button
-                class="action-btn animate__animated animate__wobble animate__delay-4s animate__fast"
-                to="/projects"
-              >
-                Explore >
-              </b-button>
-              <b-button class="action-btn" to="/contact" variant="primary">
-                Get In Touch
-              </b-button>
-            </div>
-          </div>
-        </b-col>
-      </b-row>
-
-      <!-- Social Icons -->
-      <div
-        class="social-icons animate__animated animate__fadeInUp animate__delay-1s"
-      >
-        <social-link :to="socialLinks.instagram"><InstagramIcon /></social-link>
-        <social-link :to="socialLinks.telegram"><PaperPlaneIcon /></social-link>
-        <a :href="`mailto:${socialLinks.mail}`">
-          <MailIcon />
-        </a>
-        <social-link :to="socialLinks.youtube" v-if="socialLinks.youtube"
-          ><YoutubeIcon
-        /></social-link>
-      </div>
-
-      <!-- Background right overlay -->
-      <div class="teletun-layer"></div>
+  <div :class="themeMode" class="home-page">
+    <!-- Full-page background image -->
+    <div class="background-image">
+      <b-img :src="avatar" alt="Murad Mursela" class="bg-img" />
+      <div class="overlay"></div>
     </div>
 
-    <!-- Bottom-left logo + Telegram subscribe section -->
-    <footer1 />
+    <!-- Main content -->
+    <div class="content-wrapper">
+      <div class="main-wrapper">
+        <b-row class="main-row" no-gutters align-v="center" align-h="center">
+          <!-- Left text -->
+          <b-col md="3" class="text-col">
+            <h1 class="intro-text">I'm</h1>
+            <h1 class="name-text">MURAD MURSELA</h1>
+            <hr class="divider" />
+            <h2 class="title-text">ARCHITECT / GRAPHIC DESIGNER</h2>
+            <p class="bio-text">
+              An architect and graphic designer, passionate about creating beautiful
+              and functional designs. I specialize in designing logos, brochures, and
+              visual identities for brands and projects.
+            </p>
+          </b-col>
+
+          <!-- Center: Photo circle -->
+          <b-col md="6" class="photo-col">
+
+          </b-col>
+
+          <!-- Right: Quote -->
+          <b-col md="3" class="quote-col">
+            <p class="quote-text">"Architecture is the time you spend your time on it."</p>
+          </b-col>
+        </b-row>
+      </div>
+
+      <!-- Bottom section / Footer -->
+      <div class="bottom-section">
+        <div class="join-telegram">Connect With Me</div>
+        <div class="social-pills">
+          <a :href="socialLinks.telegram" target="_blank" class="pill telegram">
+            <i class="bi bi-telegram"></i>
+          </a>
+          <a :href="socialLinks.instagram" target="_blank" class="pill instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a :href="`mailto:${socialLinks.mail}`" class="pill email">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+        </div>
+        <p class="footer-text">© {{ new Date().getFullYear() }} Murad Mursela. All Rights Reserved.</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import YoutubeIcon from "vue-ionicons/dist/logo-youtube.vue";
-import MailIcon from "vue-ionicons/dist/md-mail.vue";
-import InstagramIcon from "vue-ionicons/dist/logo-instagram.vue";
-import PaperPlaneIcon from "vue-ionicons/dist/md-paper-plane.vue"; // Telegram icon
-import CallIcon from "vue-ionicons/dist/md-call.vue";
-
-import logoWhite from "@/assets/mura-creatives-logo-white.png";
-import logoBlack from "@/assets/mura-creatives-logo-black.png";
-
 export default {
-  components: {
-    YoutubeIcon,
-    MailIcon,
-    InstagramIcon,
-    PaperPlaneIcon,
-    CallIcon,
-  },
+  name: "HomePage",
   data() {
     return {
-      avatar: require("@/assets/mi.png"),
-      themeMode: "light",
-      telegramInput: "",
+      avatar: require("@/assets/murilo.png"),
       socialLinks: {
-        instagram:
-          "https://www.instagram.com/mura_abdo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+        instagram: "https://www.instagram.com/mura_abdo",
         telegram: "https://t.me/Murilo81",
         mail: "muradmursela@gmail.com",
-        youtube: "",
       },
+      themeMode: "light",
     };
   },
-  computed: {
-    logoSrc() {
-      return this.themeMode === "dark" ? logoWhite : logoBlack;
-    },
+  mounted() {
+    if (process.client) {
+      const savedMode = localStorage.getItem("themeMode");
+      if (savedMode) this.themeMode = savedMode;
+      else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        this.themeMode = "dark";
+
+      document.body.classList.toggle("dark", this.themeMode === "dark");
+    }
   },
   methods: {
-    changeAvatar() {
-      this.avatar = require("@/assets/mi.png");
+    toggleDarkMode() {
+      if (process.client) {
+        this.themeMode = this.themeMode === "dark" ? "light" : "dark";
+        document.body.classList.toggle("dark", this.themeMode === "dark");
+        localStorage.setItem("themeMode", this.themeMode);
+      }
     },
-    goToTelegram() {
-      window.open(this.socialLinks.telegram, "_blank");
-    },
-  },
-  mounted() {
-    const saved = localStorage.themeMode;
-    if (saved) {
-      this.themeMode = saved;
-    } else if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      this.themeMode = "dark";
-    }
-    document.body.classList.toggle("dark", this.themeMode === "dark");
   },
 };
 </script>
 
 <style scoped>
+/* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+/* Bootstrap Icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
-/* The same CSS as your original — unchanged */
-.bottom-left-section {
-  position: fixed;
-  bottom: 2vh;
-  left: 2vw;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5vw;
-  z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+/* THEME VARIABLES */
+.light {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #001f3f;
+}
+.dark {
+  --bg-color: #001f3f;
+  --text-color: #ffffff;
+  --accent-color: #ff9f43;
 }
 
-/* Logo */
-.brand-logo {
-  height: 8vh;
-  width: 15vw;
-  max-width: 200px;
-  transition: transform 0.2s ease, opacity 0.3s ease;
-}
-
-.brand-logo:hover {
-  transform: scale(1.1);
-}
-
-/* Telegram Subscribe Section */
-.telegram-subscribe {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5vh;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
-  color: #ffffff;
-}
-
-body.dark .telegram-subscribe {
-  color: #fff;
-}
-
-.telegram-subscribe p {
-  margin: 0;
-  font-weight: 500;
-}
-
-.telegram-subscribe input {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #bbb;
-  border-radius: 0.4rem;
-  outline: none;
-  font-size: 0.75rem;
-  width: 15vw;
-  max-width: 250px;
-  background-color: #f9f9f9;
-  color: #222;
-  transition: border-color 0.3s ease;
-}
-
-.telegram-subscribe input:focus {
-  border-color: #929292;
-}
-
-body.dark .telegram-subscribe input {
-  background-color: #222;
-  border-color: #444;
-  color: #fff;
-}
-
-.telegram-subscribe button {
-  background-color: #929292;
-  color: white;
-  border: none;
-  border-radius: 0.4rem;
-  padding: 0.4rem 0;
-  width: 5vw;
-  min-width: 60px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.telegram-subscribe button:hover {
-  background-color: #686868;
-  transform: scale(1.03);
-}
-
-/* Slogan styles */
-.slogan {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.3;
-  letter-spacing: 0.05rem;
-  color: #ffffff;
-  max-width: 30vw;
-  margin-top: 1vh;
-}
-
-.slogan h3 {
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-}
-
-body.dark .slogan {
-  color: #ddd;
-}
-
-/* Contact styles */
-.contact {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
-  color: #ffffff;
-  max-width: 12vw;
-}
-
-body.dark .contact {
-  color: #fff;
-}
-
-.contact h2 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 0 0 0.5rem 0;
-  letter-spacing: 0.06rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5vw;
-  margin-bottom: 0.4vh;
-  transition: transform 0.2s ease;
-}
-
-.contact-item:hover {
-  transform: translateX(0.2vw);
-}
-
-.contact-icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  color: #555;
-  transition: color 0.2s ease;
-}
-
-body.dark .contact-icon {
-  color: #ccc;
-}
-
-.contact-item:hover .contact-icon {
-  color: #929292;
-}
-
-.contact a {
-  color: inherit;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact a:hover {
-  text-decoration: underline;
-}
-
-/* General layout */
-.border-wrapper {
+/* Page wrapper */
+.home-page {
   position: relative;
-  overflow: visible;
-  width: 100%;
-  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-color);
 }
 
-.border-bottom {
-  padding-top: 1vh;
-  position: absolute;
+/* Full-screen background image */
+.background-image {
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 8vh;
-  background-image: url("@/assets/teletun.png");
-  background-size: cover;
-  bottom: -4vh;
-  z-index: 1;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
 }
-
-#avatar-img {
-  width: 30vw;
-  height: 67vh;
-  max-width: 400px;
-  max-height: 450px;
+.bg-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  animation: subtle-float-and-shift 4s infinite ease-in-out alternate;
-  filter: drop-shadow(0.5vw 0.5vw 0.5vw rgba(140, 31, 243, 0.3));
-  margin-right: 5vw;
-  z-index: 99999;
+  filter: brightness(0.3);
+}
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
 }
 
-.intro-section {
+/* Main content wrapper */
+.content-wrapper { position: relative; z-index: 10; }
+
+/* MAIN WRAPPER */
+.main-wrapper {
+  min-height: 80vh;
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
 }
+.main-row { width: 100%; text-align: center; }
 
-.text-content {
-  flex: 0 0 49vw;
-  z-index: 3;
-  margin-left: -10vw;
-  padding: 2vw;
+/* TEXT COLUMN */
+.text-col { text-align: left; padding-left: 4rem; }
+.intro-text { font-size: 2.8rem; font-weight: 700; margin-bottom: 0; }
+.name-text { font-size: 4.2rem; font-weight: 900; margin-top: 0; line-height: 1; color: var(--accent-color); }
+.divider { width: 100px; border: 2px solid var(--accent-color); margin: 1rem 0; }
+.title-text { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
+.bio-text { font-size: 1rem; line-height: 1.7; max-width: 300px; }
+
+/* PHOTO CIRCLE */
+.photo-col { display: flex; justify-content: center; }
+.photo-circle {
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  width: 380px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  transition: all 0.4s ease;
 }
+.photo-img { width: 90%; height: 90%; object-fit: cover; border-radius: 50%; }
 
-.intro {
-  font-size: 2.5vw;
-  line-height: 1.2;
-}
+/* QUOTE */
+.quote-col { text-align: right; padding-right: 4rem; }
+.quote-text { font-size: 1.3rem; font-style: italic; opacity: 0.9; color: #fff; }
 
-.info {
-  font-size: 1.2vw;
-  margin-top: 2vh;
-}
-
-.action-btn {
-  margin-top: 2vh;
-  margin-right: 1vw;
-  padding: 0.5rem 1.5rem;
-  font-size: 1vw;
-}
-
-.bg-side {
-  position: fixed;
-  top: 0;
-  right: 10vw;
-  width: 25vw;
-  height: 90vh;
-  background-image: url("@/assets/bg.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: cover;
-  pointer-events: none;
-  animation: slide-in-right 1.2s ease-out;
-}
-
-.teletun-layer {
-  position: fixed;
-  top: 0;
-  right: 8vw;
-  width: 5vw;
-  height: 100vh;
-  background-image: url("@/assets/teletun-min.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: cover;
-  z-index: 9998;
-  pointer-events: none;
-  animation: slide-in-right 1.2s ease-out;
-}
-
-/* Animations */
-@keyframes subtle-float-and-shift {
-  0%,
-  100% {
-    transform: scale(1.2) translate(0, 0) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.2) translate(0.2vw, -0.2vh) rotate(1deg);
-  }
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(5vw);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Social Icons */
-.social-icons {
-  position: fixed;
-  top: 20vh;
-  left: 1.5vw;
-  transform: translateY(-50%);
+/* BOTTOM SECTION / FOOTER */
+.bottom-section {
   display: flex;
   flex-direction: column;
-  gap: 0.5vh;
-  z-index: 1000;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0,0,0,0.5);
+  border-radius: 20px;
+  margin: 2rem auto;
+  width: fit-content;
+  backdrop-filter: blur(8px);
 }
-
-.social-icons svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-  transition: transform 0.3s;
+.join-telegram { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent-color); }
+.social-pills { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1rem; }
+.pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  color: #fff;
 }
+.pill.telegram { background: #26a5e4; }
+.pill.instagram { background: #e1306c; }
+.pill.email { background: #555555; }
+.pill:hover { transform: scale(1.2); filter: brightness(1.2); }
+.footer-text { font-size: 0.85rem; color: #ccc; margin-top: 0.5rem; }
 
-.social-icons svg:hover {
-  transform: scale(1.2);
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .main-row { flex-direction: column; }
+  .text-col, .quote-col { text-align: center; padding: 0 2rem; }
+  .photo-circle { width: 300px; height: 300px; margin: 2rem 0; }
 }
-
-/* Tablet Responsive (max-width: 1024px) */
-@media (max-width: 1024px) {
-  .border-wrapper {
-    min-height: 100vh;
-    height: auto;
-  }
-
-  .main-row {
-    flex-direction: column;
-    align-items: center;
-    padding: 4vw;
-  }
-
-  .avatar-col {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2vh;
-  }
-
-  #avatar-img {
-    width: 40vw;
-    height: 40vh;
-    max-width: 300px;
-    max-height: 300px;
-    margin-right: 0;
-  }
-
-  .intro-section {
-    justify-content: center;
-    text-align: center;
-    margin-left: 0;
-  }
-
-  .text-content {
-    flex: 1;
-    margin-left: 0;
-    padding: 4vw;
-  }
-
-  .intro {
-    font-size: 4vw;
-  }
-
-  .info {
-    font-size: 2vw;
-  }
-
-  .action-btn {
-    margin: 2vh 1vw;
-    padding: 0.6rem 2rem;
-    font-size: 1.8vw;
-  }
-
-  .bg-side,
-  .teletun-layer,
-  .border-bottom,
-  .border-right {
-    display: none;
-  }
-
-  .bottom-left-section {
-    position: static;
-    flex-direction: column;
-    align-items: center;
-    gap: 2vh;
-    padding: 4vw;
-    z-index: auto;
-  }
-
-  .brand-logo {
-    height: 7vh;
-    width: auto;
-    max-width: 180px;
-  }
-
-  .telegram-subscribe {
-    align-items: center;
-    text-align: center;
-  }
-
-  .telegram-subscribe input {
-    width: 50vw;
-    max-width: 300px;
-    font-size: 1.5vw;
-  }
-
-  .telegram-subscribe button {
-    width: 20vw;
-    max-width: 120px;
-    font-size: 1.5vw;
-    margin-top: 1vh;
-  }
-
-  .slogan {
-    font-size: 1.5vw;
-    text-align: center;
-    max-width: 80vw;
-    margin: 2vh auto;
-  }
-
-  .contact {
-    font-size: 1.5vw;
-    text-align: center;
-    max-width: 80vw;
-  }
-
-  .contact h2 {
-    font-size: 2vw;
-  }
-
-  .contact-item {
-    justify-content: center;
-  }
-
-  .contact-icon {
-    width: 2vw;
-    height: 2vw;
-  }
-
-  .social-icons {
-    position: static;
-    flex-direction: row;
-    justify-content: center;
-    gap: 3vw;
-    margin: 2vh 0;
-    transform: none;
-  }
-
-  .social-icons svg {
-    width: 3vw;
-    height: 3vw;
-  }
-}
-
-/* Mobile Responsive (max-width: 768px) */
-@media (max-width: 768px) {
-  .main-row {
-    padding: 5vw;
-    margin-top: 100px;
-  }
-
-  .avatar-col {
-    display: none;
-  }
-
-  .intro {
-    font-size: 5vw;
-  }
-
-  .info {
-    font-size: 3vw;
-  }
-
-  .action-btn {
-    width: 100%;
-    margin: 2vh 0;
-    font-size: 3vw;
-  }
-
-  .brand-logo {
-    height: 6vh;
-    max-width: 150px;
-  }
-
-  .telegram-subscribe input {
-    width: 80vw;
-    max-width: 90%;
-    font-size: 3.5vw;
-  }
-
-  .telegram-subscribe button {
-    width: 30vw;
-    max-width: 100px;
-    font-size: 3.5vw;
-  }
-
-  .slogan {
-    font-size: 2.5vw;
-    max-width: 90vw;
-  }
-
-  .contact {
-    font-size: 2.5vw;
-    max-width: 90vw;
-  }
-
-  .contact h2 {
-    font-size: 3vw;
-  }
-
-  .contact-icon {
-    width: 4vw;
-    height: 4vw;
-  }
-
-  .social-icons svg {
-    width: 5vw;
-    height: 5vw;
-  }
-}
-
-/* Extra small devices (max-width: 576px) */
-@media (max-width: 576px) {
-  .intro {
-    font-size: 6vw;
-  }
-
-  .info {
-    font-size: 3.5vw;
-  }
-
-  .action-btn {
-    font-size: 3.5vw;
-  }
-
-  .slogan {
-    font-size: 3vw;
-  }
-
-  .contact {
-    font-size: 3vw;
-  }
-
-  .contact h2 {
-    font-size: 3.5vw;
-  }
-
-  .telegram-subscribe input,
-  .telegram-subscribe button {
-    font-size: 4vw;
-  }
-
-  .social-icons svg {
-    width: 6vw;
-    height: 6vw;
-  }
-}
-
-/* For same width (around 1280px) but smaller height: allow scrolling */
-@media (min-width: 1280px) and (max-height: 1023px) {
-  .border-wrapper {
-    min-height: auto;
-    height: auto;
-  }
+@media (max-width: 480px) {
+  .intro-text { font-size: 2rem; }
+  .name-text { font-size: 2.8rem; }
+  .photo-circle { width: 250px; height: 250px; }
 }
 </style>
