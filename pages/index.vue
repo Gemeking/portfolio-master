@@ -27,7 +27,9 @@
 
           <!-- Center: Photo circle -->
           <b-col md="6" class="photo-col">
-        
+            <div class="photo-circle">
+              <b-img :src="avatar" alt="Murad Mursela" class="photo-img" />
+            </div>
           </b-col>
 
           <!-- Right: Quote -->
@@ -42,13 +44,13 @@
         <div class="join-telegram">Connect With Me</div>
         <div class="social-pills">
           <a :href="socialLinks.telegram" target="_blank" class="pill">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+            <img :src="telegramIcon" alt="Telegram" />
           </a>
           <a :href="socialLinks.instagram" target="_blank" class="pill">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+            <img :src="instagramIcon" alt="Instagram" />
           </a>
           <a :href="`mailto:${socialLinks.mail}`" class="pill">
-            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
+            <img :src="emailIcon" alt="Email" />
           </a>
         </div>
         <p class="footer-text">© {{ new Date().getFullYear() }} Murad Mursela. All Rights Reserved.</p>
@@ -63,6 +65,9 @@ export default {
   data() {
     return {
       avatar: require("@/assets/murilo.png"),
+      telegramIcon: require("@/assets/telegram.png"),
+      instagramIcon: require("@/assets/instagram.png"),
+      emailIcon: require("@/assets/email.png"),
       socialLinks: {
         instagram: "https://www.instagram.com/mura_abdo",
         telegram: "https://t.me/Murilo81",
@@ -122,6 +127,8 @@ export default {
   position: relative;
   font-family: "Montserrat", sans-serif;
   color: var(--text-color);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Full-screen background image */
@@ -150,7 +157,7 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-/* Main background image */
+/* Main background image - hidden on smaller screens */
 .bg-img {
   margin-top: 83px;
   width: 40%;
@@ -170,27 +177,66 @@ export default {
 }
 
 /* Main content wrapper */
-.content-wrapper { position: relative; z-index: 10; }
+.content-wrapper { 
+  position: relative; 
+  z-index: 10; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 /* MAIN WRAPPER */
 .main-wrapper {
-  min-height: 80vh;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
-.main-row { width: 100%; text-align: center; }
+.main-row { 
+  width: 100%; 
+  text-align: center; 
+}
 
-.text-col { text-align: left; padding-left: 4rem; }
-.intro-text { font-size: 2.8rem; font-weight: 700; margin-bottom: 0; }
-.name-text { font-size: 4.2rem; font-weight: 900; margin-top: 0; line-height: 1; color: var(--accent-color); }
-.divider { width: 100px; border: 2px solid var(--accent-color); margin: 1rem 0; }
-.title-text { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
-.bio-text { font-size: 1rem; line-height: 1.7; max-width: 300px; }
+.text-col { 
+  text-align: left; 
+  padding-left: 4rem; 
+}
+.intro-text { 
+  font-size: 2.8rem; 
+  font-weight: 700; 
+  margin-bottom: 0; 
+}
+.name-text { 
+  font-size: 4.2rem; 
+  font-weight: 900; 
+  margin-top: 0; 
+  line-height: 1; 
+  color: var(--accent-color); 
+}
+.divider { 
+  width: 100px; 
+  border: 2px solid var(--accent-color); 
+  margin: 1rem 0; 
+}
+.title-text { 
+  font-size: 1.4rem; 
+  font-weight: 600; 
+  margin-bottom: 1rem; 
+}
+.bio-text { 
+  font-size: 1rem; 
+  line-height: 1.7; 
+  max-width: 300px; 
+}
 
 /* Photo circle */
-.photo-col { display: flex; justify-content: center; }
+.photo-col { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
 .photo-circle {
   background-color: var(--bg-color);
   border-radius: 50%;
@@ -201,12 +247,25 @@ export default {
   justify-content: center;
   box-shadow: 0 0 25px rgba(0,0,0,0.5);
   transition: all 0.4s ease;
+  overflow: hidden;
 }
-.photo-img { width: 90%; height: 90%; object-fit: cover; border-radius: 50%; }
+.photo-img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
 
 /* Quote */
-.quote-col { text-align: right; padding-right: 4rem; }
-.quote-text { font-size: 1.3rem; font-style: italic; opacity: 0.9; color: var(--text-color); }
+.quote-col { 
+  text-align: right; 
+  padding-right: 4rem; 
+}
+.quote-text { 
+  font-size: 1.3rem; 
+  font-style: italic; 
+  opacity: 0.9; 
+  color: var(--text-color); 
+}
 
 /* Bottom Section / Footer */
 .bottom-section {
@@ -221,7 +280,12 @@ export default {
   width: fit-content;
   backdrop-filter: blur(8px);
 }
-.join-telegram { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent-color); }
+.join-telegram { 
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  margin-bottom: 1rem; 
+  color: var(--accent-color); 
+}
 
 /* Social icons as images */
 .social-pills {
@@ -245,23 +309,142 @@ export default {
   width: 70%;
   height: 70%;
   object-fit: contain;
+  
 }
 .pill:hover {
   transform: scale(1.2);
   filter: brightness(1.2);
 }
 
-.footer-text { font-size: 0.85rem; color: #ccc; margin-top: 0.5rem; }
-
-/* Responsive */
-@media (max-width: 991px) {
-  .main-row { flex-direction: column; }
-  .text-col, .quote-col { text-align: center; padding: 0 2rem; }
-  .photo-circle { width: 300px; height: 300px; margin: 2rem 0; }
+.footer-text { 
+  font-size: 0.85rem; 
+  color: #ff9900; 
+  margin-top: 0.5rem; 
 }
-@media (max-width: 480px) {
+
+/* ================== RESPONSIVE DESIGN ================== */
+
+/* Large laptops (992px - 1199px) */
+@media (max-width: 1199px) {
+  .bg-circle {
+    width: 600px;
+    height: 600px;
+  }
+  
+  .photo-circle {
+    width: 340px;
+    height: 340px;
+  }
+  
+  .intro-text { font-size: 2.5rem; }
+  .name-text { font-size: 3.8rem; }
+}
+
+/* Tablets and small laptops (768px - 991px) */
+@media (max-width: 991px) {
+  .bg-img {
+    display: none; /* Hide the background image on smaller screens */
+  }
+  
+  .bg-circle {
+    width: 500px;
+    height: 500px;
+  }
+  
+  .main-row { 
+    flex-direction: column; 
+    text-align: center;
+  }
+  
+  .text-col, .quote-col { 
+    text-align: center; 
+    padding: 0 2rem; 
+    margin-bottom: 2rem;
+  }
+  
+  .photo-circle { 
+    width: 300px; 
+    height: 300px; 
+    margin: 2rem 0; 
+  }
+  
+  .bio-text { 
+    max-width: 100%; 
+    margin: 0 auto;
+  }
+  
+  .intro-text { font-size: 2.2rem; }
+  .name-text { font-size: 3.2rem; }
+}
+
+/* Mobile landscape and small tablets (576px - 767px) */
+@media (max-width: 767px) {
+  .bg-circle {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .text-col, .quote-col { 
+    padding: 0 1.5rem; 
+  }
+  
+  .photo-circle { 
+    width: 280px; 
+    height: 280px; 
+  }
+  
   .intro-text { font-size: 2rem; }
   .name-text { font-size: 2.8rem; }
-  .photo-circle { width: 250px; height: 250px; }
+  .title-text { font-size: 1.2rem; }
+  
+  .quote-text { 
+    font-size: 1.1rem; 
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .bottom-section {
+    padding: 1.5rem;
+    margin: 1rem auto;
+    width: 90%;
+  }
+}
+
+/* Mobile phones (up to 575px) */
+@media (max-width: 575px) {
+  .bg-circle {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .text-col, .quote-col { 
+    padding: 0 1rem; 
+  }
+  
+  .photo-circle { 
+    width: 250px; 
+    height: 250px; 
+  }
+  
+  .intro-text { font-size: 1.8rem; }
+  .name-text { font-size: 2.4rem; }
+  .title-text { font-size: 1.1rem; }
+  
+  .bio-text { 
+    font-size: 0.9rem; 
+  }
+  
+  .quote-text { 
+    font-size: 1rem; 
+  }
+  
+  .join-telegram { 
+    font-size: 1.1rem; 
+  }
+  
+  .pill {
+    width: 45px;
+    height: 45px;
+  }
 }
 </style>
