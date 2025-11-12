@@ -48,24 +48,25 @@
 
         <!-- Main Navigation -->
         <b-navbar-nav class="main-nav">
-          <b-nav-item to="/" class="nav-link-item">Home</b-nav-item>
-          <b-nav-item to="/about" class="nav-link-item">About</b-nav-item>
+  <b-nav-item to="/" class="nav-link-item" @click="closeNav">Home</b-nav-item>
+  <b-nav-item to="/about" class="nav-link-item" @click="closeNav">About</b-nav-item>
 
-          <!-- Projects Dropdown -->
-          <b-nav-item-dropdown 
-            text="Projects" 
-            right 
-            class="projects-dropdown nav-link-item"
-          >
-            <b-dropdown-item to="/projects/furniture" class="dropdown-item-custom">Furniture Design</b-dropdown-item>
-            <b-dropdown-item to="/projects/graphics" class="dropdown-item-custom">Graphics Design</b-dropdown-item>
-            <b-dropdown-item to="/projects/architectural" class="dropdown-item-custom">Architectural</b-dropdown-item>
-            <b-dropdown-item to="/projects/interior" class="dropdown-item-custom">Interior</b-dropdown-item>
-          </b-nav-item-dropdown>
+  <!-- Projects Dropdown -->
+  <b-nav-item-dropdown 
+    text="Projects" 
+    right 
+    class="projects-dropdown nav-link-item"
+  >
+    <b-dropdown-item to="/projects/furniture" class="dropdown-item-custom" @click="closeNav">Furniture Design</b-dropdown-item>
+    <b-dropdown-item to="/projects/graphics" class="dropdown-item-custom" @click="closeNav">Graphics Design</b-dropdown-item>
+    <b-dropdown-item to="/projects/architectural" class="dropdown-item-custom" @click="closeNav">Architectural</b-dropdown-item>
+    <b-dropdown-item to="/projects/interior" class="dropdown-item-custom" @click="closeNav">Interior</b-dropdown-item>
+  </b-nav-item-dropdown>
 
-          <b-nav-item to="/contact" class="nav-link-item">Contact Me</b-nav-item>
-          <b-nav-item to="/cv" class="nav-link-item">CV</b-nav-item>
-        </b-navbar-nav>
+  <b-nav-item to="/contact" class="nav-link-item" @click="closeNav">Contact Me</b-nav-item>
+  <b-nav-item to="/cv" class="nav-link-item" @click="closeNav">CV</b-nav-item>
+</b-navbar-nav>
+
       </b-collapse>
     </b-navbar>
   </div>
@@ -85,18 +86,22 @@ export default {
     };
   },
   methods: {
-    toggleDarkMode() {
-      if (this.themeMode === "light") {
-        this.themeMode = "dark";
-        localStorage.themeMode = "dark";
-        document.body.classList.add("dark");
-      } else {
-        this.themeMode = "light";
-        localStorage.themeMode = "light";
-        document.body.classList.remove("dark");
-      }
-    },
+  toggleDarkMode() {
+    if (this.themeMode === "light") {
+      this.themeMode = "dark";
+      localStorage.themeMode = "dark";
+      document.body.classList.add("dark");
+    } else {
+      this.themeMode = "light";
+      localStorage.themeMode = "light";
+      document.body.classList.remove("dark");
+    }
   },
+  closeNav() {
+    // Collapse the navbar on mobile
+    this.$root.$emit('bv::toggle::collapse', 'nav-collapse');
+  }
+},
   mounted() {
     if (localStorage.themeMode === "dark") {
       this.themeMode = "dark";
@@ -108,19 +113,19 @@ export default {
 
 <style scoped>
 /* THEME VARIABLES */
-:root {
+:root { 
   --navbar-bg-light: rgba(255, 255, 255, 0.95);
-  --navbar-bg-dark: rgba(0, 31, 63, 0.95);
-  --text-light: #111111;
-  --text-dark: #ffffff;
+  --navbar-bg-dark: rgba(0, 31, 63, 0.95); 
+  --text-light: #111111; 
+  --text-dark: #ffffff; 
   --accent-light: #001f3f;
-  --accent-dark: #ff9f43;
-  --hover-light: rgba(0, 31, 63, 0.1);
-  --hover-dark: rgba(255, 255, 255, 0.1);
-  --border-light: rgba(0, 0, 0, 0.1);
-  --border-dark: rgba(255, 255, 255, 0.1);
-  --dropdown-bg-light: #ffffff;
-  --dropdown-bg-dark: #001f3f;
+  --accent-dark: #ff9f43; 
+  --hover-light: rgba(0, 31, 63, 0.1); 
+  --hover-dark: rgba(255, 255, 255, 0.1); 
+  --border-light: rgba(0, 0, 0, 0.1); 
+  --border-dark: rgba(255, 255, 255, 0.1); 
+  --dropdown-bg-light: #ffffff; 
+  --dropdown-bg-dark: #001f3f; 
 }
 
 /* Right border decoration */
@@ -334,110 +339,36 @@ body.dark .dropdown-item-custom:hover {
 }
 
 /* ================== RESPONSIVE DESIGN ================== */
+/* --- FIXES FOR MOBILE VISIBILITY AND LOGO --- */
 
-/* Tablets and small laptops (768px - 991px) */
+/* Mobile menu background like transparent water color */
 @media (max-width: 991px) {
-  .custom-navbar {
-    padding: 0 1rem;
-    height: 80px;
-  }
-  
-  .logo-img {
-    height: 200px;
-  }
-  
   .navbar-collapse {
-    background-color: var(--navbar-bg-light);
-    padding: 1rem;
-    margin-top: 10px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.8); /* light glassy background */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
-  
+
   body.dark .navbar-collapse {
-    background-color: var(--navbar-bg-dark);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  }
-  
-  .main-nav {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-  }
-  
-  .nav-link-item {
-    padding: 0;
-    width: 100%;
-  }
-  
-  .nav-link-item .nav-link {
-    display: block;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-  }
-  
-  /* Remove separators on mobile */
-  .main-nav .nav-link-item + .nav-link-item::before {
-    display: none;
-  }
-  
-  .theme-toggle {
-    margin-right: 0;
-    margin-bottom: 1rem;
-    align-self: flex-end;
-  }
-  
-  .projects-dropdown .dropdown-menu {
-    position: static !important;
-    transform: none !important;
-    width: 100%;
-    box-shadow: none;
-    margin-top: 0.5rem;
-    border: 1px solid var(--border-light);
-  }
-  
-  body.dark .projects-dropdown .dropdown-menu {
-    border: 1px solid var(--border-dark);
+    background: rgba(0, 31, 63, 0.8); /* dark glassy background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
-/* Mobile phones (up to 767px) */
-@media (max-width: 767px) {
-  .custom-navbar {
-    height: 70px;
-  }
-  
-  .logo-img {
-    height: 200px;
-  }
-  
-  .navbar-collapse {
-    padding: 0.75rem;
-  }
-  
-  .nav-link-item .nav-link {
-    font-size: 15px;
-    padding: 0.6rem 0.75rem;
-  }
-  
-  .theme-icon {
-    font-size: 20px;
-  }
-}
-
-/* Small mobile phones (up to 480px) */
+/* Keep logo visible and balanced on small screens */
 @media (max-width: 480px) {
-  .custom-navbar {
-    height: 65px;
-    padding: 0 0.75rem;
-  }
-  
   .logo-img {
-    height: 40px;
-  }
-  
-  .border-right {
-    display: none;
+    height: 100px !important; /* increase visibility */
+    width: auto !important;
+    display: block;
+    margin: 0 auto; /* center it */
   }
 }
+
+/* Optional subtle floating effect on logo for a premium feel */
+.logo-img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
 </style>
